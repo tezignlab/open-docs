@@ -10,9 +10,12 @@ sidebar_position: 4
 
 ```typescript
 interface EventConfirm {
+  // 事件标识
   type: "tezign-selector-confirm-btn";
   data: {
+    // 事件描述
     msg: string;
+    // 被选择的素材数据
     selectedMaterial: Array<Asset>;
   };
 }

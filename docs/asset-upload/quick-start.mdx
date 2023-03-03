@@ -1,0 +1,127 @@
+---
+sidebar_position: 2
+---
+
+# 快速开始
+
+你需要将素材上传组件的链接用iframe嵌入你的系统，你的代码和素材上传组件会基于[postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)来进行通信交互数据。
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="vanilla" label="原生" default>
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>素材选择器父页面</title>
+</head>
+<body>
+    <iframe src= "https://xxx.tezign.com/dam_enterprise/material-upload" id="iframe"/>
+</body>
+<script>
+    const receiveMessage = (event) => {
+        if (event?.data?.type === 'tezign-upload-page-ready') {
+            // iframe 页面加载完成，可以传入配置参数
+            postMessage();
+            return;
+        }
+        if (event?.data?.type === 'tezign-upload-confirm-btn') {
+            // 点击【确认】 按钮 -- 这里接收已上传完成的文件集合
+            // todo
+            console.log(event.data.files);
+            return;
+        }
+        if (event?.data?.type === 'tezign-upload-cancel-btn') {
+            // 点击【取消】 按钮
+            // todo
+            console.log(event.data);
+            return;
+        }
+    };
+    const postMessage = () => {
+        //素材选择器
+        const iframe = document.getElementById("iframe");
+
+        iframe.contentWindow.postMessage({
+          type: 'tezign-material-upload',
+          data: { 
+              accept: '',
+              maximum: 10,
+              maximumTip: ''
+          }
+        }, '*');
+    }
+    window.addEventListener('message', receiveMessage, false);
+</script>
+</html>
+```
+
+  </TabItem>
+
+  <TabItem value="reactjs" label="React">
+
+```typescript jsx
+import React, { useEffect } from 'react';
+
+export default () => {
+
+    //获取素材上传信息
+    useEffect(() => {
+        window.addEventListener('message', receiveMessage, false);
+        return () => {
+          window.removeEventListener('message', receiveMessage);
+        };
+    }, []);
+      
+    const receiveMessage = (event) => {
+        if (event?.data?.type === 'tezign-upload-page-ready') {
+            // iframe 页面加载完成，可以传入配置参数
+            postMessage();
+            return;
+        }
+        if (event?.data?.type === 'tezign-upload-confirm-btn') {
+            // 点击【确认】 按钮 -- 这里接收已上传完成的文件集合
+            // todo
+            console.log(event.data.files);
+            return;
+        }
+        if (event?.data?.type === 'tezign-upload-cancel-btn') {
+            // 点击【取消】 按钮
+            // todo
+            console.log(event.data);
+            return;
+        }
+    };
+      
+    const postMessage = () => {
+        //素材选择器
+        const iframe = document.getElementById("iframe");
+
+        iframe.contentWindow.postMessage({
+          type: 'tezign-material-upload',
+          data: { 
+              accept: '',
+              maximum: 10,
+              maximumTip: ''
+          }
+        }, '*');
+    }
+      
+    // 此iframeUrl 填入上传链接
+    const iframeUrl = "https://xxx.tezign.com/dam_enterprise/material-upload"
+    return (
+        <div>
+            <iframe src={iframeUrl} id="iframe"/>
+        </div> 
+    )
+}
+```
+
+  </TabItem>
+</Tabs>
+
+上传完成后，点击页面弹窗「确认」按钮，上传iframe会使用postMssage 把所有上传成功的文件数组在您的页面中返回（此数组对应示例中的event.data.files），该响应数组包含DAM的所有资产信息。

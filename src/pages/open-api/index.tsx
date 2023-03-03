@@ -6,7 +6,7 @@ function OpenApi() {
   return (
     <Layout title="特赞服务端开放能力" wrapperClassName={$styles.layout}>
       <iframe
-        src="https://tz-open-api.apifox.cn/doc-1896237"
+        src="https://tz-open-api.apifox.cn"
         style={{
           height: "100%",
           width: "100%",

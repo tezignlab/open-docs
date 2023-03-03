@@ -10,6 +10,7 @@ sidebar_position: 5
 
 ```typescript
 interface SelectionChangeEvent {
+  // 事件标识
   type: "tezign-selector-selection-change";
   data: ConfirmData; // 同tezgin-selector-confirm-btn的数据结构（查看权限）
 }

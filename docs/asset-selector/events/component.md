@@ -8,6 +8,7 @@ sidebar_position: 5
 
 ```typescript
 interface EventComponent {
+  // 事件标识
   type: "tezign-selector-comp-event";
   data: {
     type: ECompType;

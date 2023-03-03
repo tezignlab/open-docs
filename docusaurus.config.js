@@ -73,14 +73,9 @@ const config = {
         },
         items: [
           {
-            to: "/docs/category/material-selector",
+            to: "/docs",
             position: "left",
-            label: "素材选择器",
-          },
-          {
-            to: "/docs/category/material-upload",
-            position: "left",
-            label: "素材上传",
+            label: "前端开放能力",
           },
           {
             to: "/open-api",
@@ -94,15 +89,15 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
+            title: "前端开放能力",
             items: [
               {
-                label: "特赞前端开放能力",
-                to: "/docs",
+                label: "素材选择器",
+                to: "/docs/category/asset-selector",
               },
               {
-                label: "特赞后端开放能力",
-                href: "/open-api",
+                label: "素材上传",
+                to: "/docs/category/asset-upload",
               },
             ],
           },
