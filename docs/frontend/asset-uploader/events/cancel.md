@@ -9,7 +9,7 @@ sidebar_position: 2
 ```typescript
 interface EventCancel {
   // 事件标识
-  type: 'tezign-upload-cancel-btn';
+  type: 'tezign-asset-uploader-cancel';
   data: {
     // 事件描述
     msg: string;

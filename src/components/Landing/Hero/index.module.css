@@ -1,0 +1,5 @@
+@media (max-width: 120vh) {
+  .comp_right {
+    display: none;
+  }
+}

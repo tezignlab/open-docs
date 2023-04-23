@@ -11,7 +11,7 @@ sidebar_position: 1
 ```typescript
 interface EventPageReady {
   // 事件标识
-  type: 'tezign-upload-page-ready';
+  type: 'tezign-asset-uploader-ready';
   data: {
     // 事件描述
     msg: string;

@@ -9,7 +9,7 @@ sidebar_position: 4
 ```typescript
 interface Config {
   // 页面传递或接收的数据标识
-  type: 'tezign-material-upload';
+  type: 'tezign-asset-uploader-config';
   data: {
     // 非必填。上传的文件类型
     accept?: string;
@@ -29,7 +29,7 @@ interface Config {
 
 ```javascript
 iframe.contentWindow.postMessage({
-  type: 'tezign-material-upload',
+  type: 'tezign-asset-uploader-config',
   data: { 
     accept: '',
     maximum: 10,

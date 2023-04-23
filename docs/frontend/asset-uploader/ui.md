@@ -10,7 +10,7 @@ sidebar_position: 4
 
 ```typescript
 interface UIConfig {
-  type: 'tezign-material-upload-ui';
+  type: 'tezign-asset-uploader-ui';
   data: {
     // 非必填。隐藏右上角关闭按钮。
     hideCancel?: boolean;
@@ -21,7 +21,7 @@ interface UIConfig {
 ## 示例
 ```javascript
 iframe.contentWindow?.postMessage({
-  type: "tezign-material-upload-ui",
+  type: 'tezign-asset-uploader-ui',
   data: {
     hideCancel: true
   },

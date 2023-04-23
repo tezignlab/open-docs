@@ -11,7 +11,7 @@ iframe页面确定按钮被点击，成功上传的文件数据会在该事件�
 ```typescript
 interface EventConfirm {
   // 事件标识
-  type: 'tezign-upload-confirm-btn';
+  type: 'tezign-asset-uploader-confirm';
   data: {
     // 返回说明
     msg: string;

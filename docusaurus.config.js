@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Tezign Open Docs",
+  title: "特赞开放平台",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -36,19 +36,13 @@ const config = {
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        docs: false,
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          path: "changelog",
+          blogTitle: "更新日志",
+          blogDescription: "特赞开放平台更新日志",
+          routeBasePath: "/changelog",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -57,32 +51,74 @@ const config = {
     ],
   ],
 
+  plugins: [
+    async function tailwindcss(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "docs-frontend",
+        path: "docs/frontend",
+        routeBasePath: "/docs/frontend",
+        sidebarPath: require.resolve("./sidebars.js"),
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "docs-webhook",
+        path: "docs/webhook",
+        routeBasePath: "/docs/webhook",
+        sidebarPath: require.resolve("./sidebars.js"),
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: "light",
+        // disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
       // algolia搜索
       // https://docusaurus.io/docs/search#using-algolia-docsearch
       //
       // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      // image: "img/docusaurus-social-card.jpg",
       navbar: {
         title: "Tezign开放平台",
         logo: {
           alt: "Site Logo",
-          src: "img/logo.png",
+          src: "img/logo-light.svg",
+          srcDark: "img/logo-dark.svg",
         },
         items: [
           {
-            to: "/docs",
+            to: "/docs/frontend",
             position: "left",
             label: "前端开放能力",
           },
           {
             to: "/open-api",
             position: "left",
-            label: "服务端开放能力",
+            label: "服务端开放接口",
           },
-          { to: "/blog", label: "更新日志", position: "left" },
+          {
+            to: "/docs/webhook",
+            position: "left",
+            label: "事件订阅",
+          },
+          { to: "/changelog", label: "更新日志", position: "left" },
         ],
       },
       footer: {
@@ -93,15 +129,37 @@ const config = {
             items: [
               {
                 label: "素材选择器",
-                to: "/docs/category/asset-selector",
+                to: "/docs/frontend/category/asset-selector",
               },
               {
                 label: "素材上传",
-                to: "/docs/category/asset-upload",
+                to: "/docs/frontend/category/asset-uploader",
+              },
+              {
+                label: "埋点SDK",
+                to: "/docs/frontend/category/dam-track",
+              },
+              {
+                label: "DAM Plugin",
+                to: "/docs/frontend/category/dam-plugin",
+              },
+            ],
+          },
+          {
+            title: "服务端开放能力",
+            items: [
+              {
+                label: "开放接口",
+                to: "/open-api",
+              },
+              {
+                label: "事件订阅",
+                to: "/docs/webhook",
               },
             ],
           },
         ],
+        copyright: `©${new Date().getFullYear()} 特赞（上海）信息科技有限公司 沪ICP备15021426号`,
       },
       prism: {
         theme: lightCodeTheme,

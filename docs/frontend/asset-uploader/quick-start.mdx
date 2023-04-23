@@ -20,22 +20,22 @@ import TabItem from "@theme/TabItem";
     <title>素材选择器父页面</title>
 </head>
 <body>
-    <iframe src= "https://xxx.tezign.com/dam_enterprise/material-upload" id="iframe"/>
+    <iframe src= "https://xxx.tezign.com/dam_enterprise/asset-uploader" id="iframe"/>
 </body>
 <script>
     const receiveMessage = (event) => {
-        if (event?.data?.type === 'tezign-upload-page-ready') {
+        if (event?.data?.type === 'tezign-asset-uploader-ready') {
             // iframe 页面加载完成，可以传入配置参数
             postMessage();
             return;
         }
-        if (event?.data?.type === 'tezign-upload-confirm-btn') {
+        if (event?.data?.type === 'tezign-asset-uploader-confirm') {
             // 点击【确认】 按钮 -- 这里接收已上传完成的文件集合
             // todo
             console.log(event.data.files);
             return;
         }
-        if (event?.data?.type === 'tezign-upload-cancel-btn') {
+        if (event?.data?.type === 'tezign-asset-uploader-cancel') {
             // 点击【取消】 按钮
             // todo
             console.log(event.data);
@@ -47,7 +47,7 @@ import TabItem from "@theme/TabItem";
         const iframe = document.getElementById("iframe");
 
         iframe.contentWindow.postMessage({
-          type: 'tezign-material-upload',
+          type: 'tezign-asset-uploader-config',
           data: { 
               accept: '',
               maximum: 10,
@@ -78,18 +78,18 @@ export default () => {
     }, []);
       
     const receiveMessage = (event) => {
-        if (event?.data?.type === 'tezign-upload-page-ready') {
+        if (event?.data?.type === 'tezign-asset-uploader-ready') {
             // iframe 页面加载完成，可以传入配置参数
             postMessage();
             return;
         }
-        if (event?.data?.type === 'tezign-upload-confirm-btn') {
+        if (event?.data?.type === 'tezign-asset-uploader-confirm') {
             // 点击【确认】 按钮 -- 这里接收已上传完成的文件集合
             // todo
             console.log(event.data.files);
             return;
         }
-        if (event?.data?.type === 'tezign-upload-cancel-btn') {
+        if (event?.data?.type === 'tezign-asset-uploader-cancel') {
             // 点击【取消】 按钮
             // todo
             console.log(event.data);
@@ -102,7 +102,7 @@ export default () => {
         const iframe = document.getElementById("iframe");
 
         iframe.contentWindow.postMessage({
-          type: 'tezign-material-upload',
+          type: 'tezign-asset-uploader-config',
           data: { 
               accept: '',
               maximum: 10,
@@ -112,7 +112,7 @@ export default () => {
     }
       
     // 此iframeUrl 填入上传链接
-    const iframeUrl = "https://xxx.tezign.com/dam_enterprise/material-upload"
+    const iframeUrl = "https://xxx.tezign.com/dam_enterprise/asset-uploader"
     return (
         <div>
             <iframe src={iframeUrl} id="iframe"/>

@@ -4,7 +4,11 @@ import $styles from "./index.module.css";
 
 function OpenApi() {
   return (
-    <Layout title="特赞服务端开放能力" wrapperClassName={$styles.layout}>
+    <Layout
+      title="特赞服务端开放能力"
+      wrapperClassName={$styles.layout}
+      noFooter
+    >
       <iframe
         src="https://tz-open-api.apifox.cn"
         style={{
