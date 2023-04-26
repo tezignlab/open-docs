@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktezign_open_docs=self.webpackChunktezign_open_docs||[]).push([[260],{4704:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"docs-frontend"}')}}]);
