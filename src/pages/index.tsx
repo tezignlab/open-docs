@@ -39,33 +39,35 @@ export default function Home(): JSX.Element {
           <Intro to={"/docs/frontend"} />
         </div>
 
-        <div className="flex justify-center mt-[-64px] px-[24px]">
-          <section className="flex flex-wrap max-w-[994px] justify-center gap-[24px]">
-            <LandingCard
-              icon={<IconFe />}
-              title="前端开放能力"
-              description="前端开放能力说明性文字前端开放接口"
-              to="/docs/frontend"
-            />
-            <LandingCard
-              icon={<IconBe />}
-              title="服务端开放接口"
-              description="后端开放能力说明性文字前端开放接口"
-              to="/open-api"
-            />
-            <LandingCard
-              icon={<IconEvent />}
-              title="事件订阅"
-              description="事件订阅说明性文字前端开放接口"
-              to="/docs/webhook"
-            />
-            <LandingCard
-              icon={<IconNote />}
-              title="更新日志"
-              description="更新日志接口说明性文字前端开放接口"
-              to="/changelog"
-            />
-          </section>
+        <div className="flex-grow">
+          <div className="flex justify-center mt-[-64px] px-[24px]">
+            <section className="flex flex-wrap max-w-[994px] justify-center gap-[24px]">
+              <LandingCard
+                icon={<IconFe />}
+                title="前端开放能力"
+                description="前端开放能力说明性文字前端开放接口"
+                to="/docs/frontend"
+              />
+              <LandingCard
+                icon={<IconBe />}
+                title="服务端开放接口"
+                description="后端开放能力说明性文字前端开放接口"
+                to="/open-api"
+              />
+              <LandingCard
+                icon={<IconEvent />}
+                title="事件订阅"
+                description="事件订阅说明性文字前端开放接口"
+                to="/docs/webhook"
+              />
+              <LandingCard
+                icon={<IconNote />}
+                title="更新日志"
+                description="更新日志接口说明性文字前端开放接口"
+                to="/changelog"
+              />
+            </section>
+          </div>
         </div>
 
         <div
