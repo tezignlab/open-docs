@@ -137,7 +137,7 @@ const config = {
               },
               {
                 label: "埋点SDK",
-                to: "/docs/frontend/category/dam-track",
+                to: "/docs/frontend/category/dam-track-sdk",
               },
               {
                 label: "DAM Plugin",
