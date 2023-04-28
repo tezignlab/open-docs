@@ -21,20 +21,22 @@ interface Config {
     // 非必填。入库接口地址
     // 该字段不传默认会调接口入库
     saveUrl?: string;
-  }
+  };
 }
 ```
 
 ## 示例
 
 ```javascript
-iframe.contentWindow.postMessage({
-  type: 'tezign-asset-uploader-config',
-  data: { 
-    accept: '',
-    maximum: 10,
-    maximumTip: '',
-  }
-}, '*');
+iframe.contentWindow.postMessage(
+  {
+    type: 'tezign-asset-uploader-config',
+    data: {
+      accept: '',
+      maximum: 10,
+      maximumTip: '',
+    },
+  },
+  '*',
+);
 ```
-

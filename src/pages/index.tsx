@@ -1,28 +1,28 @@
-import React, { useMemo } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { Context as DocusaurusContext } from "@docusaurus/core/lib/client/docusaurusContext";
-import { useHistory } from "@docusaurus/router";
-import LayoutProvider from "@theme/Layout/Provider";
-import Navbar from "@theme/Navbar";
-import { LandingCard } from "../components/Landing/Card";
-import { Intro, Background } from "../components/Landing/Hero";
-import IconFe from "./assets/fe.svg";
-import IconBe from "./assets/be.svg";
-import IconEvent from "./assets/event.svg";
-import IconNote from "./assets/note.svg";
-import clsx from "clsx";
+import React, { useMemo } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { Context as DocusaurusContext } from '@docusaurus/core/lib/client/docusaurusContext';
+import { useHistory } from '@docusaurus/router';
+import LayoutProvider from '@theme/Layout/Provider';
+import Navbar from '@theme/Navbar';
+import { LandingCard } from '../components/Landing/Card';
+import { Intro, Background } from '../components/Landing/Hero';
+import IconFe from './assets/fe.svg';
+import IconBe from './assets/be.svg';
+import IconEvent from './assets/event.svg';
+import IconNote from './assets/note.svg';
+import clsx from 'clsx';
 
 export default function Home(): JSX.Element {
   const docusaurusContext = useDocusaurusContext();
   const history = useHistory();
-  const isHomePage = history.location.pathname === "/";
+  const isHomePage = history.location.pathname === '/';
 
   const context = useMemo(() => {
     const logo = (docusaurusContext.siteConfig.themeConfig.navbar as any).logo;
     if (isHomePage) {
-      logo.src = "img/logo-dark.svg";
+      logo.src = 'img/logo-dark.svg';
     } else {
-      logo.src = "img/logo-light.svg";
+      logo.src = 'img/logo-light.svg';
     }
     (docusaurusContext.siteConfig.themeConfig.navbar as any).logo = { ...logo };
     return { ...docusaurusContext };
@@ -36,7 +36,7 @@ export default function Home(): JSX.Element {
         <Navbar />
         <div className="h-[57vh] relative">
           <Background />
-          <Intro to={"/docs/frontend"} />
+          <Intro to={'/docs/frontend'} />
         </div>
 
         <div className="flex-grow">
@@ -72,8 +72,8 @@ export default function Home(): JSX.Element {
 
         <div
           className={clsx(
-            "text-[#B1B8C2] text-center text-xs py-[20px]",
-            "bg-[#F3F5F7] shadow-[inset_0_1px_0_#DCE1E5] mt-[43px]"
+            'text-[#B1B8C2] text-center text-xs py-[20px]',
+            'bg-[#F3F5F7] shadow-[inset_0_1px_0_#DCE1E5] mt-[43px]',
           )}
         >
           {(docusaurusContext.siteConfig.themeConfig.footer as any).copyright}

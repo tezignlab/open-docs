@@ -1,6 +1,6 @@
-import React from "react";
-import Layout from "@theme/Layout";
-import $styles from "./index.module.css";
+import React from 'react';
+import Layout from '@theme/Layout';
+import $styles from './index.module.css';
 
 function OpenApi() {
   return (
@@ -12,8 +12,8 @@ function OpenApi() {
       <iframe
         src="https://tz-open-api.apifox.cn"
         style={{
-          height: "100%",
-          width: "100%",
+          height: '100%',
+          width: '100%',
         }}
         referrerPolicy="same-origin"
       ></iframe>

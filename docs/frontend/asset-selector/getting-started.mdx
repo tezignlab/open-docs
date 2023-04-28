@@ -3,10 +3,10 @@ sidebar_position: 2
 title: 快速开始
 ---
 
-你需要将素材上传组件的链接用iframe嵌入你的系统，你的代码和素材上传组件会基于[postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)来进行通信交互数据。
+你需要将素材上传组件的链接用 iframe 嵌入你的系统，你的代码和素材上传组件会基于[postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)来进行通信交互数据。
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="vanilla" label="原生" default>
@@ -26,18 +26,18 @@ import TabItem from "@theme/TabItem";
   </body>
   <script>
     const receiveMessage = (event) => {
-      if (event?.data?.type === "tezign-selector-page-ready") {
+      if (event?.data?.type === 'tezign-selector-page-ready') {
         // iframe 页面加载完成，可以传入配置参数
         postMessage();
         return;
       }
-      if (event?.data?.type === "tezign-selector-confirm-btn") {
+      if (event?.data?.type === 'tezign-selector-confirm-btn') {
         // 点击【确认】 按钮 -- 这里接收已选择的素材集合
         // todo
         console.log(event.data.selectedMaterial);
         return;
       }
-      if (event?.data?.type === "tezign-selector-cancel-btn") {
+      if (event?.data?.type === 'tezign-selector-cancel-btn') {
         // 点击【取消】 按钮
         // todo
         console.log(event.data);
@@ -46,24 +46,24 @@ import TabItem from "@theme/TabItem";
     };
     const postMessage = () => {
       //素材选择器
-      const iframe = document.getElementById("iframe");
+      const iframe = document.getElementById('iframe');
 
       iframe.contentWindow.postMessage(
         {
-          type: "tezign-material-selector",
+          type: 'tezign-material-selector',
           data: {
             config: [
-              { id: "image", limit: 5 },
-              { id: "audio", limit: 9 },
+              { id: 'image', limit: 5 },
+              { id: 'audio', limit: 9 },
             ],
-            filterCode: "open-component-search-001",
+            filterCode: 'open-component-search-001',
             formatLimit: 5,
           },
         },
-        "*"
+        '*',
       );
     };
-    window.addEventListener("message", receiveMessage, false);
+    window.addEventListener('message', receiveMessage, false);
   </script>
 </html>
 ```
@@ -73,30 +73,30 @@ import TabItem from "@theme/TabItem";
   <TabItem value="reactjs" label="React">
 
 ```typescript jsx
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
 export default function App() {
   //获取素材选择信息
   useEffect(() => {
-    window.addEventListener("message", receiveMessage, false);
+    window.addEventListener('message', receiveMessage, false);
     return () => {
-      window.removeEventListener("message", receiveMessage);
+      window.removeEventListener('message', receiveMessage);
     };
   }, []);
 
   const receiveMessage = (event) => {
-    if (event?.data?.type === "tezign-selector-page-ready") {
+    if (event?.data?.type === 'tezign-selector-page-ready') {
       // iframe 页面加载完成，可以传入配置参数
       postMessage();
       return;
     }
-    if (event?.data?.type === "tezign-selector-confirm-btn") {
+    if (event?.data?.type === 'tezign-selector-confirm-btn') {
       // 点击【确认】 按钮 -- 这里接收已选择的素材集合
       // todo
       console.log(event.data.selectedMaterial);
       return;
     }
-    if (event?.data?.type === "tezign-selector-cancel-btn") {
+    if (event?.data?.type === 'tezign-selector-cancel-btn') {
       // 点击【取消】 按钮
       // todo
       console.log(event.data);
@@ -106,26 +106,26 @@ export default function App() {
 
   const postMessage = () => {
     //素材选择器
-    const iframe = document.getElementById("iframe") as HTMLIFrameElement;
+    const iframe = document.getElementById('iframe') as HTMLIFrameElement;
 
     iframe.contentWindow.postMessage(
       {
-        type: "tezign-material-selector",
+        type: 'tezign-material-selector',
         data: {
           config: [
-            { id: "image", limit: 5 },
-            { id: "audio", limit: 9 },
+            { id: 'image', limit: 5 },
+            { id: 'audio', limit: 9 },
           ],
-          filterCode: "open-component-search-001",
+          filterCode: 'open-component-search-001',
           formatLimit: 5,
         },
       },
-      "*"
+      '*',
     );
   };
 
   // 此iframeUrl 填入素材选择器链接
-  const iframeUrl = "https://xxx.tezign.com/dam_enterprise/material_selector";
+  const iframeUrl = 'https://xxx.tezign.com/dam_enterprise/material_selector';
   return (
     <div>
       <iframe src={iframeUrl} id="iframe" />

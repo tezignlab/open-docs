@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # 确定
 
-iframe页面确定按钮被点击，成功上传的文件数据会在该事件中被返回。
+iframe 页面确定按钮被点击，成功上传的文件数据会在该事件中被返回。
 
 ## 数据结构
 
@@ -30,7 +30,7 @@ interface EventConfirm {
       // 素材大小。单位：byte。
       size: Byte;
     }>;
-  }
+  };
 }
 
 type Byte = number;

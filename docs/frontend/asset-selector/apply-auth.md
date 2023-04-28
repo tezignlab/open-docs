@@ -14,13 +14,12 @@ sidebar_position: 7
 ```typescript
 enum EAuthCode {
   // 没有downloadUrl等
-  VIEW = "searchOriginalAuth",
-  DOWNLOAD = "downloadOriginalAuth",
+  VIEW = 'searchOriginalAuth',
+  DOWNLOAD = 'downloadOriginalAuth',
 }
 
 interface ApplyAuthCmd {
-  type: "tezign-selector-auth";
-  id?: string;
+  type: 'tezign-selector-auth';
   data: { auth: EAuthCode };
 }
 ```
@@ -30,9 +29,9 @@ interface ApplyAuthCmd {
 ```javascript
 iframe.contentWindow?.postMessage(
   {
-    type: "tezign-selector-auth",
+    type: 'tezign-selector-auth',
     data: { auth: EAuthCode.DOWNLOAD },
   },
-  "*"
+  '*',
 );
 ```

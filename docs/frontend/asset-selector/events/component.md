@@ -9,7 +9,7 @@ sidebar_position: 5
 ```typescript
 interface EventComponent {
   // 事件标识
-  type: "tezign-selector-comp-event";
+  type: 'tezign-selector-comp-event';
   data: {
     type: ECompType;
     id: string;
@@ -18,7 +18,7 @@ interface EventComponent {
 }
 
 enum ECompType {
-  Checkbox = "checkbox",
+  Checkbox = 'checkbox',
 }
 ```
 
@@ -30,30 +30,30 @@ TODO 把联动的事件和命令放到一个 example 里，引入 embed stackbli
 // 配置checkbox到底部操作栏
 iframe.contentWindow?.postMessage(
   {
-    type: "tezign-selector-ui",
+    type: 'tezign-selector-ui',
     data: {
-      "#action": [
+      '#action': [
         {
           type: ECompType.Checkbox,
           props: {
             checked: false,
-            id: "checkbox_1",
-            text: "发文件链接",
+            id: 'checkbox_1',
+            text: '发文件链接',
           },
         },
       ],
     },
   },
-  "*"
+  '*',
 );
 
 // ---- 响应组件事件
 window.addEventListener(
-  "message",
+  'message',
   (event) => {
-    if (event?.data?.type === "tezign-selector-comp-event") {
+    if (event?.data?.type === 'tezign-selector-comp-event') {
       const { type, id, value } = event?.data?.data || {};
-      if (type === ECompType.Checkbox && id === "checkbox_1") {
+      if (type === ECompType.Checkbox && id === 'checkbox_1') {
         // ... do something
         // for example, use 'tezign-selector-ui' command to toggle checked state
         console.log(value);
@@ -61,6 +61,6 @@ window.addEventListener(
       return;
     }
   },
-  false
+  false,
 );
 ```

@@ -13,6 +13,6 @@ interface EventCancel {
   data: {
     // 事件描述
     msg: string;
-  }
+  };
 }
 ```
