@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Communication
+title: 数据通信
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,83 +10,73 @@ import TabItem from '@theme/TabItem';
 
 iframe 和主 App 之间通过 postMessage 进行通信。
 
-确保在 嵌入在 slot 里的 iframe 应用 `onMount` 的时候，向主 App 发送 `ready` 事件
+## 事件
+
+### ready
+
+你的 iframe 应用加载完成之后，向主应用发送 ready 事件，主应用收到 ready 事件后会立即 iframe 应用发送 props 事件，传递数据。之后当 props 更新后，会再次发送 props 事件，传递新的数据。
+
+#### 数据类型
 
 ```typescript
-const IframeApp = () => {
-  // onMount
-  useEffect(() => {
-    // 确保作为 iframe 被嵌入
-    if (window.top !== window.self) {
-      window.postMessage(
-        {
-          event: 'ready',
-          data: {
-            // 传递给主 App 的数据
-            greetings: 'hello world',
-          },
-        },
-        '*',
-      );
+interface EventReady {
+  event: 'ready';
+}
+```
+
+#### 例子
+
+```typescript
+// 确保你的应用已经加载完成。
+// 比如在react里可以在`useEffect`里执行，
+// 在vue里可以在`onMounted`里执行。
+// 以及确保你的应用被嵌入在 iframe 中
+if (self !== parent) {
+  window.addEventListener('message', (e) => {
+    if (e.data.event === 'props') {
+      // ...
     }
-  }, []);
-};
+  });
+
+  window.postMessage(
+    {
+      event: 'ready',
+    },
+    '*',
+  );
+}
 ```
 
-### Events
+### props
 
-- ready
-- props
-- invoke-function | invoke-function-result
+#### 数据类型
 
-## Component plugin
-
-用户提供的 Component 类型插件在 DAM 里是作为 `Web Component` 嵌入应用的，因此可以使用 Element 原生的事件机制进行通信。
-
-<Tabs>
-
-  <TabItem value="receiver" label="receive-custom-event.tsx" default>
-
-```tsx
-const App = () => {
-  const elRef = useRef();
-
-  useEffect(() => {
-    elRef.current.addEventListener('some-custom-event', (e) => {
-      console.log(e.detail);
-    });
-  }, []);
-
-  return <div ref={elRef}></div>;
-};
+```typescript
+interface EventProps<SlotProps> {
+  event: 'props';
+  data: SlotProps;
+}
 ```
 
-  </TabItem>
+#### 例子
 
-  <TabItem value="dispatcher" label="dispatch-custom-event.tsx">
+```typescript
+// 确保你的应用已经加载完成。
+// 比如在react里可以在`useEffect`里执行，
+// 在vue里可以在`onMounted`里执行。
+// 以及确保你的应用被嵌入在 iframe 中
+if (self !== parent) {
+  window.addEventListener('message', (e) => {
+    if (e.data.event === 'props') {
+      // ...
+    }
+  });
 
-```tsx
-const App = () => {
-  const elRef = useRef();
-
-  const handleClick = () => {
-    // document or elRef.current
-    document.dispatchEvent(
-      new CustomEvent('some-custom-event', {
-        detail: {
-          data: 'hello world',
-        },
-        composed: true, // important! 确保事件穿透 shadow DOM boundary 到 standard DOM.
-      }),
-    );
-  };
-
-  return <button ref={elRef} onClick={handleClick}></button>;
-};
+  window.postMessage(
+    {
+      event: 'ready',
+    },
+    '*',
+  );
+}
 ```
-
-  </TabItem>
-
-</Tabs>
-
-事件名称 some-custom-event，是由 DAM 不同插槽提供的自定义事件，遵循 HTML 原生事件命名的规则，一般是以 - 分隔。

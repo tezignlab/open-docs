@@ -2,8 +2,11 @@
 sidebar_position: 1
 ---
 
-entry 是一个特殊的 slot，仅接受 plugin type 为 function。
-接受一个 app 对象作为入参，app 对象封装并对外提供调用 DAM 项目里的一些能力，比如注册新的自定义路由和增加左侧导航栏的自定义链接等。
+接受一个 PluginApp 对象作为入参，PluginApp 对象封装并对外提供调用 DAM 项目里的一些能力，比如注册新的自定义路由和增加左侧导航栏的自定义链接等。
+
+## 插件类型
+
+[Function](../plugin-types/function-plugin)
 
 ## 插件数据类型
 

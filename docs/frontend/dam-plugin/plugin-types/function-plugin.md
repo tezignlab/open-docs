@@ -3,23 +3,22 @@ sidebar_position: 2
 title: Function Plugin
 ---
 
-Function plugin 一般作为，比如说文件上传链路的前置或者后置校验，在校验过程中也可以做唤起弹窗之类的 UI 操作（这个取决于 plugin 开发方）。
-总之，它不会渲染任何 UI 到 Slot 中。
+Function plugin 一般会作为 DAM 逻辑链路中的一环，比如说文件上传链路的前置或者后置校验。
 
 ```typescript
-interface FunctionPlugin<R, PluginApp> {
+interface FunctionPlugin<PluginApp, R> {
   (app?: PluginApp): R;
 }
 ```
 
-这个类型的插件需要以`default export`导出。
-
 ## 例子
 
-```typescript
-function fun(...args) {
+```typescript title="plugin.tsx"
+function fun<PluginApp>(app?: PluginApp) {
   // ...
 }
 
+// !必须把插件函数以default export进行导出
+// highlight-next-line
 export default fun;
 ```

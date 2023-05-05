@@ -6,7 +6,7 @@ sidebar_position: 6
 
 TODO 补充示意图
 
-## 插件数据类型
+## 数据类型
 
 ```typescript
 interface MenuItem {

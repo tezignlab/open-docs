@@ -6,7 +6,7 @@ Portal 详情页的批量操作"更多"下拉选项
 
 ![portal-detail-operation-more](./assets/portal-detail-operation-more.jpeg)
 
-## 插件数据类型
+## 数据类型
 
 ```typescript
 interface MenuItem {

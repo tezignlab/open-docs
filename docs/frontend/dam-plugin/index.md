@@ -3,8 +3,7 @@ sidebar_position: 1
 title: 简介
 ---
 
-通过插件系统，租户可以在不侵入 DAM 本身代码，不依赖 DAM 发板前提下，通过插件的方式来实现自己的定制化需求。
-Tezign 负责提供 [Slot](#slot) 的位置，数据规范，以及可插入的 [Plugin](#plugin类型) 类型，第三方负责具体 Slot 的 Plugin 的定制化功能开发。
+通过插件系统，可以通过插件的来实现自己的定制化需求。Tezign 负责提供 Slot 的位置，数据规范，以及可插入的 Plugin 类型，第三方负责具体 Slot 的 Plugin 的定制化功能开发。
 
 ## Slot
 
