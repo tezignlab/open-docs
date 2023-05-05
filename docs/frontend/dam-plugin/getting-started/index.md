@@ -12,7 +12,7 @@ sidebar_position: 2
 ### 新建项目
 
 ```shell
-npm create @tezignlab/dam-plugin@latest -t react-component ./my-plugin
+npm create @tezignlab/dam-plugin@latest -- -t react-component ./my-plugin
 cd ./my-plugin
 npm install
 ```
@@ -33,8 +33,9 @@ npm run build
 
 插件项目打包完成之后，可以使用我们提供的上传 CLI（[@tezignlab/dam-plugin-uploader](https://www.npmjs.com/package/@tezignlab/dam-plugin-uploader)）来上传项目资源。
 
-TODO
-
 ### 配置插件
 
-CS 后台配置 TODO
+插件需要在 Tezign 的 CS 后台配置插件地址才能生效，具体操作联系具体对接人。
+
+如果还在调试中的插件，可以配置你本地应用的地址，方便调试。
+其他环境的插件，打包完成之后，请先[上传插件](#上传插件)。
