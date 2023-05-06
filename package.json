@@ -16,6 +16,7 @@
     "typecheck": "tsc",
     "fmt": "npm run fmt:docs",
     "fmt:docs": "npx prettier -w ./changelog ./docs ./src",
+    "fmt:examples": "npx prettier -w ./examples",
     "precommit": "npx lint-staged"
   },
   "lint-staged": {
