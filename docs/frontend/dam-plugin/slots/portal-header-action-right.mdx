@@ -9,6 +9,10 @@ Portal 详情页的顶部'右侧'自定义按钮
 
 ![portal-header-action-right](./assets/portal-header-action-right.jpeg)
 
+## 插件类型
+
+[Component](../plugin-types/component-plugin)
+
 ## 数据结构
 
 ```typescript
@@ -25,9 +29,9 @@ interface ComponentPlugin_PortalHeaderActionRight<T> {
   <TabItem label="plugin.ts" value="plugin.ts" default>
 
 ```tsx
-import cssString from 'virtual:dam-plugin-css-string';
 import { render } from './App';
 
+const cssString = '';
 const useShadowDom = true;
 
 export { cssString, render, useShadowDom };
@@ -46,8 +50,7 @@ function App(props: any) {
     <button
       onClick={() => {
         console.log('clicked');
-      }}
-    >
+      }}>
       Button
     </button>
   );

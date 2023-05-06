@@ -8,30 +8,38 @@ sidebar_position: 1
 
 [Function](../plugin-types/function-plugin)
 
-## 插件数据类型
+## 数据类型
 
 ```typescript
-interface ComponentRouteConfig {
-  title?: string;
+type NonEmptyString<S extends string> = S extends '' ? never : S;
+
+type DamRoute<S extends string> = `/dam_enterprise/${NonEmptyString<S>}`;
+
+// 插件自己注册的路由
+type DamPluginRoute<S extends string> = DamRoute<`plugin/${NonEmptyString<S>}`>;
+
+interface ComponentRouteConfig<S extends string> {
   /**
    * 路由的路径，会在浏览器地址栏显示。
+   * 比如：/dam_enterprise/plugin/demo1
    */
-  to: string;
+  to: DamPluginRoute<S>;
 }
-interface IframeType extends ComponentRouteConfig {
+interface IframeType<S extends string> extends ComponentRouteConfig<S> {
   /**
    * iframe的静态资源地址
    */
   url: string;
 }
-interface ComponentType extends ComponentRouteConfig {
+interface ComponentType<S extends string> extends ComponentRouteConfig<S> {
+  // Component Plugin加载函数
   plugin: ComponentPlugin | (() => Promise<ComponentPlugin>);
 }
 
-type RouteConfig = IframeType | ComponentType;
+type RouteConfig<S extends string> = IframeType<S> | ComponentType<S>;
 
 interface PluginApp {
-  addRoute(config: RouteConfig): void;
+  addRoute(config: RouteConfig<any>): void;
 }
 
 interface FunctionPlugin_Entry {
@@ -41,4 +49,14 @@ interface FunctionPlugin_Entry {
 
 ## 例子
 
-TODO
+```typescript title="entry_plugin.ts"
+function plugin(app: PluginApp) {
+  console.log('...', arguments);
+
+  app.addRoute({
+    to: '/dam_enterprise/plugin/demo1',
+    plugin: () => import('./menu_plugin'),
+  });
+}
+export default plugin;
+```

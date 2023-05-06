@@ -6,6 +6,10 @@ Portal 详情页的批量操作"更多"下拉选项
 
 ![portal-detail-operation-more](./assets/portal-detail-operation-more.png)
 
+## 插件类型
+
+[Function](../plugin-types/function-plugin)
+
 ## 数据类型
 
 ```typescript

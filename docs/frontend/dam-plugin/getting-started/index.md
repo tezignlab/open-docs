@@ -39,3 +39,9 @@ npm run build
 
 如果还在调试中的插件，可以配置你本地应用的地址，方便调试。
 其他环境的插件，打包完成之后，请先[上传插件](#上传插件)。
+
+---
+
+我们为你准备了相关的 examples，来帮助你了解 DAM Plugin 项目的全貌。
+
+[dam-plugin-basic](https://github.com/tezignlab/tree/main/examples/dam-plugin-basic)

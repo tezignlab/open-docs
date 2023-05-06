@@ -6,6 +6,10 @@ sidebar_position: 6
 
 ![](./assets/material-library-operation-more.png)
 
+## 插件类型
+
+[Function](../plugin-types/function-plugin)
+
 ## 数据类型
 
 ```typescript
