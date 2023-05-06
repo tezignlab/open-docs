@@ -8,13 +8,14 @@ import TabItem from '@theme/TabItem';
 
 ## Iframe plugin
 
-iframe 和主 App 之间通过 postMessage 进行通信。
+iframe plugin 和主应用之间通过 postMessage 进行通信。
 
 ## 事件
 
 ### ready
 
-你的 iframe 应用加载完成之后，向主应用发送 ready 事件，主应用收到 ready 事件后会立即 iframe 应用发送 props 事件，传递数据。之后当 props 更新后，会再次发送 props 事件，传递新的数据。
+你的 iframe 应用加载完成之后，向主应用发送 ready 事件，订阅插件的 props， props 会通过 props 事件来发送给你的插件。
+主应用在收到 ready 事件后会立即向你的插件发送 props 事件，当插件的 props 更新之后，会再次向你的插件发送 props 事件。
 
 #### 数据类型
 
@@ -30,7 +31,7 @@ interface EventReady {
 // 确保你的应用已经加载完成。
 // 比如在react里可以在`useEffect`里执行，
 // 在vue里可以在`onMounted`里执行。
-// 以及确保你的应用被嵌入在 iframe 中
+// 以及确认你的应用被嵌入在 iframe 中
 if (self !== parent) {
   window.addEventListener('message', (e) => {
     if (e.data.event === 'props') {
@@ -49,6 +50,8 @@ if (self !== parent) {
 
 ### props
 
+当你的插件向主应用发送 ready 事件后、以及 props 更新时，主应用会向插件发送 props 事件，来传递最新的插件 props。
+
 #### 数据类型
 
 ```typescript
@@ -64,7 +67,7 @@ interface EventProps<SlotProps> {
 // 确保你的应用已经加载完成。
 // 比如在react里可以在`useEffect`里执行，
 // 在vue里可以在`onMounted`里执行。
-// 以及确保你的应用被嵌入在 iframe 中
+// 以及确认你的应用被嵌入在 iframe 中
 if (self !== parent) {
   window.addEventListener('message', (e) => {
     if (e.data.event === 'props') {
@@ -80,3 +83,9 @@ if (self !== parent) {
   );
 }
 ```
+
+### invoke-function
+
+iframe plugin 可以通过 invoke-function 事件来调用主应用的方法。
+
+TODO

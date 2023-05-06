@@ -3,7 +3,9 @@ sidebar_position: 2
 title: Function Plugin
 ---
 
-Function plugin 一般会作为 DAM 逻辑链路中的一环，比如说文件上传链路的前置或者后置校验。
+Function plugin 一般会作为 DAM 链路中的一环被调用，比如说文件上传链路的前置或者后置校验。
+
+## 插件类型定义
 
 ```typescript
 interface FunctionPlugin<PluginApp, R> {
@@ -14,11 +16,11 @@ interface FunctionPlugin<PluginApp, R> {
 ## 例子
 
 ```typescript title="plugin.tsx"
-function fun<PluginApp>(app?: PluginApp) {
+function plugin<any>(app?: any) {
   // ...
 }
 
 // !必须把插件函数以default export进行导出
 // highlight-next-line
-export default fun;
+export default plugin;
 ```

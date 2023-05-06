@@ -7,11 +7,11 @@ Component plugin 主要负责在 Slot 中渲染 UI。和它的名字不同，其
 由于前端框架众多，所以采用了 render 函数的方式， 可以与 DAM 互不依赖。
 
 Component plugin 的组件会被作为一个 [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) 渲染到 Slot 中，并且支持开启 [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM)。
-这样做的好处是，可以避免 CSS 样式污染，也可以避免不同插件之间的 DOM 事件冲突。但因此要把插件的样式以 CSS String 来在样式注入，如果你的插件里导出了 CSS String，DAM 会自动进行样式注入。
+这样做的好处是，可以避免 CSS 样式污染，也可以避免不同插件之间的 DOM 事件冲突。但因此要把插件的样式以 CSS String 形式导出，添加 style 标签来注入样式，如果你的插件里导出了 CSS String，DAM 会自动进行样式注入。
 
 ![web component](./assets/web-component.jpeg)
 
-## 数据类型
+## 插件类型定义
 
 ```typescript
 interface ComponentPlugin<T> {
