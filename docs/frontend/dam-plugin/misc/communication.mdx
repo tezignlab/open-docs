@@ -86,6 +86,69 @@ if (self !== parent) {
 
 ### invoke-function
 
-iframe plugin 可以通过 invoke-function 事件来调用主应用的方法。
+iframe plugin 可以通过 invoke-function 事件来调用主应用的函数，函数返回之后会把结果通过 invoke-function 返回给你的 iframe plugin。
 
-TODO
+#### 数据类型
+
+```typescript
+interface InvokeFunctionRequest {
+  event: 'invoke-function';
+  data: {
+    // 调用的函数路径，比如`history.push`。
+    // 目前支持的方法有
+    functionPath: string;
+    // 函数的参数。
+    paramArray: any | any[];
+    // 用来区分函数调用请求，会在函数结果里返回。
+    requestId?: number | string;
+  };
+}
+
+interface InvokeFunctionResult {
+  event: 'invoke-function';
+  data: {
+    // 调用函数时带上的requestId。
+    requestId?: number | string;
+    // 函数调用的结果。
+    result: Result;
+  };
+}
+```
+
+目前支持的`functionPath`有
+
+- history.push
+- history.replace
+- history.go
+- history.goBack
+- history.goForward
+
+以上 history 的方法，具体参数查看https://v5.reactrouter.com/web/api/history
+
+#### 例子
+
+调用
+
+```typescript
+if (self !== parent) {
+  const requestId = Date.now();
+  // 监听主应用返回的函数调用结果
+  window.addEventListener('invoke-function', (evt) => {
+    if (evt.data?.event === 'invoke-function') {
+      const result = evt.data.data;
+      if (result.requestId === requestId) {
+        // ...
+      }
+    }
+  });
+  // 调用主应用的history.push方法，切换路由到/dam_enterprise/portal_list
+  window.postMessage({
+    event: 'invoke-function',
+    data: {
+      functionPath: 'history.push',
+      paramArray: ['/dam_enterprise/portal_list'],
+      requestId,
+    },
+  });
+}
+```
