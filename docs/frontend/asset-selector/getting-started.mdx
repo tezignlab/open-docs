@@ -19,50 +19,53 @@ import TabItem from '@theme/TabItem';
     <title>素材选择器父页面</title>
   </head>
   <body>
+    <script>
+      const receiveMessage = (event) => {
+        if (event?.data?.type === 'tezign-selector-page-ready') {
+          // iframe 页面加载完成，可以传入配置参数
+          postMessage();
+          return;
+        }
+        if (event?.data?.type === 'tezign-selector-confirm-btn') {
+          // 点击【确认】 按钮 -- 这里接收已选择的素材集合
+          console.log(event.data.selectedMaterial);
+          return;
+        }
+        if (event?.data?.type === 'tezign-selector-cancel-btn') {
+          // 点击【取消】 按钮
+          console.log(event.data);
+          return;
+        }
+      };
+      const postMessage = () => {
+        //素材选择器
+        const iframe = document.getElementById('iframe');
+        if (!iframe) {
+          return;
+        }
+
+        iframe.contentWindow.postMessage(
+          {
+            type: 'tezign-material-selector',
+            data: {
+              config: [
+                { id: 'image', limit: 5 },
+                { id: 'audio', limit: 9 },
+              ],
+              filterCode: 'open-component-search-001',
+              formatLimit: 5,
+            },
+          },
+          '*',
+        );
+      };
+      window.addEventListener('message', receiveMessage, false);
+    </script>
     <iframe
       src="https://xxx.tezign.com/dam_enterprise/material_selector"
       id="iframe"
     />
   </body>
-  <script>
-    const receiveMessage = (event) => {
-      if (event?.data?.type === 'tezign-selector-page-ready') {
-        // iframe 页面加载完成，可以传入配置参数
-        postMessage();
-        return;
-      }
-      if (event?.data?.type === 'tezign-selector-confirm-btn') {
-        // 点击【确认】 按钮 -- 这里接收已选择的素材集合
-        console.log(event.data.selectedMaterial);
-        return;
-      }
-      if (event?.data?.type === 'tezign-selector-cancel-btn') {
-        // 点击【取消】 按钮
-        console.log(event.data);
-        return;
-      }
-    };
-    const postMessage = () => {
-      //素材选择器
-      const iframe = document.getElementById('iframe');
-
-      iframe.contentWindow.postMessage(
-        {
-          type: 'tezign-material-selector',
-          data: {
-            config: [
-              { id: 'image', limit: 5 },
-              { id: 'audio', limit: 9 },
-            ],
-            filterCode: 'open-component-search-001',
-            formatLimit: 5,
-          },
-        },
-        '*',
-      );
-    };
-    window.addEventListener('message', receiveMessage, false);
-  </script>
 </html>
 ```
 
