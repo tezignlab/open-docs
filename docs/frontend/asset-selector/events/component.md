@@ -24,8 +24,6 @@ enum ECompType {
 
 ## 例子
 
-TODO 把联动的事件和命令放到一个 example 里，引入 embed stackblitz，确保引用"同一份"。
-
 ```javascript
 // 配置checkbox到底部操作栏
 iframe.contentWindow?.postMessage(
