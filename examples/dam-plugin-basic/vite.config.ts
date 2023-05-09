@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import damPlugin from '@tezignlab/vite-plugin-dam-plugin';
+import cssString from '@tezignlab/vite-plugin-css-string';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   return {
-    plugins: [react(), damPlugin()],
+    plugins: [react(), cssString()],
     define: {
       'process.env': {
         NODE_ENV: command === 'build' ? 'production' : 'development',

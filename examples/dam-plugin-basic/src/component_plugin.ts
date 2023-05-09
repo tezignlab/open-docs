@@ -1,4 +1,4 @@
-import cssString from 'virtual:dam-plugin-css-string';
+import cssString from 'virtual:css-string';
 import { render } from './App';
 
 const useShadowDom = true;

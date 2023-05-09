@@ -46,17 +46,17 @@ export { render, cssString, useShadowDom };
 
 ### Vite 插件
 
-我们为这个场景准备了一个 Vite 插件[@tezignlab/vite-plugin-dam-plugin](https://www.npmjs.com/package/@tezignlab/vite-plugin-dam-plugin)，不再需要手动管理样式的导出，也不会遗漏样式。
+我们为这个场景准备了一个 Vite 插件[@tezignlab/vite-plugin-css-string](https://www.npmjs.com/package/@tezignlab/vite-plugin-css-string)，不再需要手动管理样式的导出，也不会遗漏样式。
 
 ```typescript title="vite.config.ts"
 import { defineConfig } from 'vite';
 // highlight-next-line
-import damPlugin from '@tezignlab/vite-plugin-dam-plugin';
+import cssString from '@tezignlab/vite-plugin-css-string';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   // highlight-next-line
-  plugins: [damPlugin()],
+  plugins: [cssString()],
 });
 ```
 
@@ -64,7 +64,7 @@ export default defineConfig({
 
 ```typescript title="plugin.tsx"
 // highlight-next-line
-import cssString from 'virtual:dam-plugin-css-string';
+import cssString from 'virtual:css-string';
 
 function render(...args) {
   // ...

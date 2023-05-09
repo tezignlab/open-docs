@@ -10,7 +10,7 @@ title: 快速开始
 3. 然后按照正常的应用来开发
 4. 和 DAM 主应用调试/验证。需要在特赞的 CS 后台进行配置，请联系相关对接人。
    1. 测试环境调试可以配置本地的服务插件地址。比如 `http://localhost:5137/src/plugin.js`
-   2. 其他环境需要先[上传插件](#上传插件)构建产物到 CDN，得到 CDN 地址后，配置到 CS 后台。
+   2. 其他环境需要[上传插件](#上传插件)构建产物到 CDN，得到 CDN 地址后，配置到 CS 后台。
 
 ## 例子
 
@@ -39,11 +39,27 @@ npm run dev
 npm run build
 ```
 
+打包产物会出现在`dist`文件夹下。
+
 ### 上传插件
 
 插件项目打包完成之后，可以使用我们提供的工具[@tezignlab/dam-plugin-uploader](https://www.npmjs.com/package/@tezignlab/dam-plugin-uploader)来上传插件。
 
-TODO
+#### 安装上传工具
+
+```shell
+npm install @tezignlab/dam-plugin-uploader@latest
+```
+
+#### 上传
+
+```shell
+dam-plugin-uploader --config ./cli.config.json --name my-plugin --tag 0.0.1 ./dist
+# or
+dpu --config ./cli.config.json --name my-plugin --tag 0.0.1 ./dist
+```
+
+更多关于上传工具的使用细节，请[查看](https://www.npmjs.com/package/@tezignlab/dam-plugin-uploader)
 
 ### 配置插件
 
