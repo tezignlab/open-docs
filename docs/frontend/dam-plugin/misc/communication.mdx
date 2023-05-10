@@ -95,7 +95,6 @@ interface InvokeFunctionRequest {
   event: 'invoke-function';
   data: {
     // 调用的函数路径，比如`history.push`。
-    // 目前支持的方法有
     functionPath: string;
     // 函数的参数。
     paramArray: any | any[];
@@ -131,7 +130,7 @@ interface InvokeFunctionResult {
 
 ```typescript
 if (self !== parent) {
-  const requestId = Date.now();
+  const requestId = 'history.push.id1';
   // 监听主应用返回的函数调用结果
   window.addEventListener('invoke-function', (evt) => {
     if (evt.data?.event === 'invoke-function') {

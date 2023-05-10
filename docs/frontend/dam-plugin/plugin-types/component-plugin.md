@@ -53,7 +53,6 @@ import { defineConfig } from 'vite';
 // highlight-next-line
 import cssString from '@tezignlab/vite-plugin-css-string';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   // highlight-next-line
   plugins: [cssString()],
