@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# UI配置
+# UI 配置
 
 :::info
 
@@ -14,7 +14,7 @@ sidebar_position: 6
 
 ```typescript
 interface SelectorUICmd {
-  type: "tezign-selector-ui";
+  type: 'tezign-selector-ui';
   data: SelectorUI;
 }
 
@@ -26,12 +26,12 @@ interface SelectorUI {
     text: string; // 确认按钮文案
   };
   // 底部提示栏
-  "#alert"?: {
+  '#alert'?: {
     // 提示文案
     message: string;
   };
   // 底部操作组件
-  "#action"?: IMetaComp[];
+  '#action'?: IMetaComp[];
 }
 
 type IMetaComp = IMetaCompCheckBox;
@@ -47,7 +47,7 @@ interface IMetaCompCheckbox {
 }
 
 enum ECompType {
-  Checkbox = "checkbox",
+  Checkbox = 'checkbox',
 }
 ```
 
@@ -55,13 +55,13 @@ enum ECompType {
 
 ```javascript
 iframe.contentWindow?.postMessage({
-  type: "tezign-selector-ui",
+  type: 'tezign-selector-ui',
   data: {
     hideCancel: true,
     confirmBtn: {
-      text: "确定按钮文案",
+      text: '确定按钮文案',
     },
-    "#alert": { message: "这是底部提示信息" },
+    '#alert': { message: '这是底部提示信息' },
   },
 });
 ```

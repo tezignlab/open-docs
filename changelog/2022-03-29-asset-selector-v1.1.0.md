@@ -1,6 +1,6 @@
 ---
 title: 素材选择器v1.1.0
-authors: "77"
+authors: '77'
 ---
 
 ## 右上角“X”按钮可配置为隐藏
@@ -13,7 +13,7 @@ interface SelectorUI {
 }
 
 interface SelectorUICmd {
-  type: "tezign-selector-ui";
+  type: 'tezign-selector-ui';
   data: SelectorUI;
 }
 ```
@@ -22,7 +22,7 @@ interface SelectorUICmd {
 
 ```javascript
 iframe.contentWindow?.postMessage({
-  type: "tezign-selector-ui",
+  type: 'tezign-selector-ui',
   data: { hideCancel: true },
 });
 ```

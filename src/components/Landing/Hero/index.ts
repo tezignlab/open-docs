@@ -1,2 +1,2 @@
-export * from "./Intro";
-export * from "./Background";
+export * from './Intro';
+export * from './Background';

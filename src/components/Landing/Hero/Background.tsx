@@ -1,14 +1,14 @@
-import React from "react";
-import Ball171 from "../assets/ball171.png";
-import Circle21 from "../assets/ring21.png";
-import Ball174 from "../assets/ball174.png";
-import Circle22 from "../assets/ring22.png";
-import Ball173 from "../assets/ball173.png";
-import Ball175 from "../assets/ring175.png";
-import Circle23 from "../assets/ring32.png";
-import Ball172 from "../assets/ball172.png";
-import $styles from "./index.module.css";
-import clsx from "clsx";
+import React from 'react';
+import Ball171 from '../assets/ball171.png';
+import Circle21 from '../assets/ring21.png';
+import Ball174 from '../assets/ball174.png';
+import Circle22 from '../assets/ring22.png';
+import Ball173 from '../assets/ball173.png';
+import Ball175 from '../assets/ring175.png';
+import Circle23 from '../assets/ring32.png';
+import Ball172 from '../assets/ball172.png';
+import $styles from './index.module.css';
+import clsx from 'clsx';
 
 export function Background() {
   return (
@@ -126,7 +126,7 @@ export function Background() {
         viewBox="-100 0 752 600"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={clsx($styles.comp_right, "absolute", "right-0", "h-full")}
+        className={clsx($styles.comp_right, 'absolute', 'right-0', 'h-full')}
       >
         <image href={Circle23} x="-135" y="0" />
         <image href={Ball175} x="-60" y="0" />

@@ -1,6 +1,6 @@
 ---
 title: 素材选择器v1.2.0
-authors: "77"
+authors: '77'
 ---
 
 ## 新增底部提示栏
@@ -11,13 +11,13 @@ authors: "77"
 
 ```typescript
 interface SelectorUI {
-  "#alert"?: {
+  '#alert'?: {
     message: string; // 提示文案
   };
 }
 
 interface SelectorUICmd {
-  type: "tezign-selector-ui";
+  type: 'tezign-selector-ui';
   data: SelectorUI;
 }
 ```
@@ -27,10 +27,10 @@ interface SelectorUICmd {
 ```javascript
 iframe.contentWindow?.postMessage(
   {
-    type: "tezign-selector-ui",
-    data: { "#alert": { message: "这是底部提示信息" } },
+    type: 'tezign-selector-ui',
+    data: { '#alert': { message: '这是底部提示信息' } },
   },
-  "*"
+  '*',
 );
 ```
 
@@ -44,7 +44,7 @@ iframe.contentWindow?.postMessage(
 
 ```typescript
 enum ECompType {
-  Checkbox = "checkbox",
+  Checkbox = 'checkbox',
 }
 
 interface IMetaCompCheckbox {
@@ -60,12 +60,12 @@ interface IMetaCompCheckbox {
 type IMetaComp = IMetaCompCheckbox;
 
 interface SelectorUI {
-  "#action"?: IMetaComp[];
+  '#action'?: IMetaComp[];
 }
 
 // ---- 组件事件
 interface ComponentEvent {
-  type: "tezign-selector-comp-event";
+  type: 'tezign-selector-comp-event';
   data: {
     type: ECompType;
     id: string;
@@ -80,30 +80,30 @@ interface ComponentEvent {
 // 配置checkbox到底部操作栏
 iframe.contentWindow?.postMessage(
   {
-    type: "tezign-selector-ui",
+    type: 'tezign-selector-ui',
     data: {
-      "#action": [
+      '#action': [
         {
           type: ECompType.Checkbox,
           props: {
             checked: false,
-            id: "checkbox_1",
-            text: "发文件链接",
+            id: 'checkbox_1',
+            text: '发文件链接',
           },
         },
       ],
     },
   },
-  "*"
+  '*',
 );
 
 // ---- 响应组件事件
 window.addEventListener(
-  "message",
+  'message',
   (event) => {
-    if (event?.data?.type === "tezign-selector-comp-event") {
+    if (event?.data?.type === 'tezign-selector-comp-event') {
       const { type, id, value } = event?.data?.data || {};
-      if (type === ECompType.Checkbox && id === "checkbox_1") {
+      if (type === ECompType.Checkbox && id === 'checkbox_1') {
         // ... do something
         // for example, use 'tezign-selector-ui' command to toggle checked state
         console.log(value);
@@ -111,7 +111,7 @@ window.addEventListener(
       return;
     }
   },
-  false
+  false,
 );
 ```
 
@@ -127,7 +127,7 @@ interface SelectorUI {
 }
 
 interface SelectorUICmd {
-  type: "tezign-selector-ui";
+  type: 'tezign-selector-ui';
   data: SelectorUI;
 }
 ```
@@ -137,10 +137,10 @@ interface SelectorUICmd {
 ```typescript
 iframe.contentWindow?.postMessage(
   {
-    type: "tezign-selector-ui",
-    data: { confirmBtn: { text: "确认按钮文案" } },
+    type: 'tezign-selector-ui',
+    data: { confirmBtn: { text: '确认按钮文案' } },
   },
-  "*"
+  '*',
 );
 ```
 
@@ -155,12 +155,12 @@ iframe.contentWindow?.postMessage(
 
 ```typescript
 enum EAuthCode {
-  VIEW = "searchOriginalAuth",
-  DOWNLOAD = "downloadOriginalAuth",
+  VIEW = 'searchOriginalAuth',
+  DOWNLOAD = 'downloadOriginalAuth',
 }
 
 interface ApplyAuthCmd {
-  type: "tezign-selector-auth";
+  type: 'tezign-selector-auth';
   data: { auth: EAuthCode };
 }
 ```
@@ -170,10 +170,10 @@ interface ApplyAuthCmd {
 ```javascript
 iframe.contentWindow?.postMessage(
   {
-    type: "tezign-selector-auth",
+    type: 'tezign-selector-auth',
     data: { auth: EAuthCode.DOWNLOAD },
   },
-  "*"
+  '*',
 );
 ```
 
@@ -185,7 +185,7 @@ iframe.contentWindow?.postMessage(
 
 ```typescript
 interface SelectionChangeEvent {
-  type: "tezign-selector-selection-change";
+  type: 'tezign-selector-selection-change';
   data: ConfirmData; // 同tezgin-selector-confirm-btn的数据结构（只看权限）
 }
 ```
@@ -199,17 +199,17 @@ config 新增 sizeLimit 可选字段，控制选择的素材大小，单位是 b
 ```javascript
 iframe.contentWindow.postMessage(
   {
-    type: "tezign-material-selector",
+    type: 'tezign-material-selector',
     data: {
       config: [
-        { id: "image", limit: 5 },
-        { id: "audio", limit: 9, sizeLimit: 10 * Math.pow(1024, 2) },
+        { id: 'image', limit: 5 },
+        { id: 'audio', limit: 9, sizeLimit: 10 * Math.pow(1024, 2) },
       ],
-      filterCode: "open-component-search-001",
+      filterCode: 'open-component-search-001',
       formatLimit: 5,
       sizeLimit: 10 * Math.pow(1024, 2), // 只能选择<=10MB素材
     },
   },
-  "*"
+  '*',
 );
 ```

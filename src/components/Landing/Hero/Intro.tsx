@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "@docusaurus/Link";
-import clsx from "clsx";
+import React from 'react';
+import Link from '@docusaurus/Link';
+import clsx from 'clsx';
 
 export function Intro(props: { to: string }) {
   return (
@@ -13,8 +13,8 @@ export function Intro(props: { to: string }) {
         </h2>
         <Link
           className={clsx(
-            "bg-white shadow-[0_2px_0_rgba(0,0,0,0.016)] rounded-[6px] p-[8px_24px] border-0 text-base text-black cursor-pointer inline-block no-underline",
-            "hover:no-underline hover:text-black"
+            'bg-white shadow-[0_2px_0_rgba(0,0,0,0.016)] rounded-[6px] p-[8px_24px] border-0 text-base text-black cursor-pointer inline-block no-underline',
+            'hover:no-underline hover:text-black',
           )}
           to={props.to}
         >

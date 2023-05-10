@@ -1,0 +1,153 @@
+---
+sidebar_position: 1
+title: 数据通信
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Iframe plugin
+
+iframe plugin 和主应用之间通过 postMessage 进行通信。
+
+## 事件
+
+### ready
+
+你的 iframe 应用加载完成之后，向主应用发送 ready 事件，订阅插件的 props， props 会通过 props 事件来发送给你的插件。
+主应用在收到 ready 事件后会立即向你的插件发送 props 事件，当插件的 props 更新之后，会再次向你的插件发送 props 事件。
+
+#### 数据类型
+
+```typescript
+interface EventReady {
+  event: 'ready';
+}
+```
+
+#### 例子
+
+```typescript
+// 确保你的应用已经加载完成。
+// 比如在react里可以在`useEffect`里执行，
+// 在vue里可以在`onMounted`里执行。
+// 以及确认你的应用被嵌入在 iframe 中
+if (self !== parent) {
+  window.addEventListener('message', (e) => {
+    if (e.data.event === 'props') {
+      // ...
+    }
+  });
+
+  window.postMessage(
+    {
+      event: 'ready',
+    },
+    '*',
+  );
+}
+```
+
+### props
+
+当你的插件向主应用发送 ready 事件后、以及 props 更新时，主应用会向插件发送 props 事件，来传递最新的插件 props。
+
+#### 数据类型
+
+```typescript
+interface EventProps<SlotProps> {
+  event: 'props';
+  data: SlotProps;
+}
+```
+
+#### 例子
+
+```typescript
+// 确保你的应用已经加载完成。
+// 比如在react里可以在`useEffect`里执行，
+// 在vue里可以在`onMounted`里执行。
+// 以及确认你的应用被嵌入在 iframe 中
+if (self !== parent) {
+  window.addEventListener('message', (e) => {
+    if (e.data.event === 'props') {
+      // ...
+    }
+  });
+
+  window.postMessage(
+    {
+      event: 'ready',
+    },
+    '*',
+  );
+}
+```
+
+### invoke-function
+
+iframe plugin 可以通过 invoke-function 事件来调用主应用的函数，函数返回之后会把结果通过 invoke-function 返回给你的 iframe plugin。
+
+#### 数据类型
+
+```typescript
+interface InvokeFunctionRequest {
+  event: 'invoke-function';
+  data: {
+    // 调用的函数路径，比如`history.push`。
+    functionPath: string;
+    // 函数的参数。
+    paramArray: any | any[];
+    // 用来区分函数调用请求，会在函数结果里返回。
+    requestId?: number | string;
+  };
+}
+
+interface InvokeFunctionResult {
+  event: 'invoke-function';
+  data: {
+    // 调用函数时带上的requestId。
+    requestId?: number | string;
+    // 函数调用的结果。
+    result: Result;
+  };
+}
+```
+
+目前支持的`functionPath`有
+
+- history.push
+- history.replace
+- history.go
+- history.goBack
+- history.goForward
+
+以上 history 的方法，具体参数查看https://v5.reactrouter.com/web/api/history
+
+#### 例子
+
+调用
+
+```typescript
+if (self !== parent) {
+  const requestId = 'history.push.id1';
+  // 监听主应用返回的函数调用结果
+  window.addEventListener('invoke-function', (evt) => {
+    if (evt.data?.event === 'invoke-function') {
+      const result = evt.data.data;
+      if (result.requestId === requestId) {
+        // ...
+      }
+    }
+  });
+  // 调用主应用的history.push方法，切换路由到/dam_enterprise/portal_list
+  window.postMessage({
+    event: 'invoke-function',
+    data: {
+      functionPath: 'history.push',
+      paramArray: ['/dam_enterprise/portal_list'],
+      requestId,
+    },
+  });
+}
+```
