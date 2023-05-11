@@ -52,7 +52,7 @@ export default function Home(): JSX.Element {
                 icon={<IconBe />}
                 title="服务端开放接口"
                 description="后端开放能力说明性文字前端开放接口"
-                to="/open-api"
+                to="/openapi"
               />
               <LandingCard
                 icon={<IconEvent />}
