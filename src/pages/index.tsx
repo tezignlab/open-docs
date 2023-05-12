@@ -36,7 +36,7 @@ export default function Home(): JSX.Element {
         <Navbar />
         <div className="h-[57vh] relative">
           <Background />
-          <Intro to={'/docs/frontend'} />
+          <Intro to={'/docs/frontend/category/asset-selector'} />
         </div>
 
         <div className="flex-grow">
@@ -46,7 +46,7 @@ export default function Home(): JSX.Element {
                 icon={<IconFe />}
                 title="前端开放能力"
                 description="前端开放能力说明性文字前端开放接口"
-                to="/docs/frontend"
+                to="/docs/frontend/category/asset-selector"
               />
               <LandingCard
                 icon={<IconBe />}
@@ -76,7 +76,8 @@ export default function Home(): JSX.Element {
             'bg-[#F3F5F7] shadow-[inset_0_1px_0_#DCE1E5] mt-[43px]',
           )}
         >
-          {(docusaurusContext.siteConfig.themeConfig.footer as any).copyright}
+          ©{new Date().getFullYear()} 特赞（上海）信息科技有限公司
+          沪ICP备15021426号
         </div>
       </LayoutProvider>
     </DocusaurusContext.Provider>

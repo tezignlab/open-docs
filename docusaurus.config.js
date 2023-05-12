@@ -104,7 +104,7 @@ const config = {
         },
         items: [
           {
-            to: '/docs/frontend',
+            to: '/docs/frontend/category/asset-selector',
             position: 'left',
             label: '前端开放能力',
           },
@@ -120,46 +120,6 @@ const config = {
           },
           { to: '/changelog', label: '更新日志', position: 'left' },
         ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: '前端开放能力',
-            items: [
-              {
-                label: '素材选择器',
-                to: '/docs/frontend/category/asset-selector',
-              },
-              {
-                label: '素材上传',
-                to: '/docs/frontend/category/asset-uploader',
-              },
-              {
-                label: '埋点SDK',
-                to: '/docs/frontend/category/dam-track-sdk',
-              },
-              {
-                label: 'DAM Plugin',
-                to: '/docs/frontend/category/dam-plugin',
-              },
-            ],
-          },
-          {
-            title: '服务端开放能力',
-            items: [
-              {
-                label: '开放接口',
-                to: '/openapi',
-              },
-              {
-                label: '事件订阅',
-                to: '/docs/webhook',
-              },
-            ],
-          },
-        ],
-        copyright: `©${new Date().getFullYear()} 特赞（上海）信息科技有限公司 沪ICP备15021426号`,
       },
       prism: {
         theme: lightCodeTheme,
