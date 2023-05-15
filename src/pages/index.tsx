@@ -45,25 +45,25 @@ export default function Home(): JSX.Element {
               <LandingCard
                 icon={<IconFe />}
                 title="前端开放能力"
-                description="前端开放能力说明性文字前端开放接口"
+                description="通过素材选择器、上传组件等接入 DAM"
                 to="/docs/frontend/category/asset-selector"
               />
               <LandingCard
                 icon={<IconBe />}
                 title="服务端开放接口"
-                description="后端开放能力说明性文字前端开放接口"
+                description="通过 Open API 对 DAM 的内容进行增删改查"
                 to="/openapi"
               />
               <LandingCard
                 icon={<IconEvent />}
                 title="事件订阅"
-                description="事件订阅说明性文字前端开放接口"
+                description="通过订阅素材新增、删除等事件，监听 DAM 中的变化"
                 to="/docs/webhook"
               />
               <LandingCard
                 icon={<IconNote />}
                 title="更新日志"
-                description="更新日志接口说明性文字前端开放接口"
+                description="开放平台能力更新日志"
                 to="/changelog"
               />
             </section>
