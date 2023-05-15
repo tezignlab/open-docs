@@ -4,6 +4,6 @@
   "link": {
     "type": "generated-index",
     "slug": "/category/tezign-external-track",
-    "description": "特赞埋点SDK"
+    "description": "特赞埋点SDK，支持web和微信小程序"
   }
 }

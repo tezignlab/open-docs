@@ -4,7 +4,8 @@ sidebar_position: 4
 
 # 埋点上报 `track`
 
- tezignSdk 需要执行初始化init方法后才能上报埋点
+tezignSdk 需要执行初始化`init`方法后才能上报埋点
+
 ```typescript
 // track方法入参
 interface ITrack {
@@ -15,13 +16,14 @@ interface ITrack {
 }
 ```
 
-## npm方式
+## npm 方式
+
 ```typescript
 tezignSdk.track(trackData: ITrack)
 ```
 
 ### 浏览器引入
+
 ```typescript
 window.tezignExternalTrack.track(trackData: ITrack)
 ```
-
