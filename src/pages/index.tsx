@@ -41,7 +41,7 @@ export default function Home(): JSX.Element {
 
         <div className="flex-grow">
           <div className="flex justify-center mt-[-64px] px-[24px]">
-            <section className="flex flex-wrap max-w-[994px] justify-center gap-[24px]">
+            <section className="flex flex-wrap max-w-[994px] min-w-full w-full justify-center gap-[24px]">
               <LandingCard
                 icon={<IconFe />}
                 title="前端开放能力"
@@ -54,12 +54,12 @@ export default function Home(): JSX.Element {
                 description="通过 Open API 对 DAM 的内容进行增删改查"
                 to="/openapi"
               />
-              <LandingCard
-                icon={<IconEvent />}
-                title="事件订阅"
-                description="通过订阅素材新增、删除等事件，监听 DAM 中的变化"
-                to="/docs/webhook"
-              />
+              {/*<LandingCard*/}
+              {/*  icon={<IconEvent />}*/}
+              {/*  title="事件订阅"*/}
+              {/*  description="通过订阅素材新增、删除等事件，监听 DAM 中的变化"*/}
+              {/*  to="/docs/webhook"*/}
+              {/*/>*/}
               <LandingCard
                 icon={<IconNote />}
                 title="更新日志"

@@ -113,11 +113,11 @@ const config = {
             position: 'left',
             label: '服务端开放接口',
           },
-          {
-            to: '/docs/webhook',
-            position: 'left',
-            label: '事件订阅',
-          },
+          // {
+          //   to: '/docs/webhook',
+          //   position: 'left',
+          //   label: '事件订阅',
+          // },
           { to: '/changelog', label: '更新日志', position: 'left' },
         ],
       },
