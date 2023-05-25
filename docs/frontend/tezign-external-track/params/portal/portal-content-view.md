@@ -12,7 +12,7 @@ tezignSdk.track({
     portal_id,
     block_id,
     content_id,
-    asset_id
-  }
-})
+    asset_id,
+  },
+});
 ```

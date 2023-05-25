@@ -3,6 +3,7 @@ sidebar_position: 5
 ---
 
 # 自定义插件
+
 使用`use`方法自定义插件
 
 ```typescript
