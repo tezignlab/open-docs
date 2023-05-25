@@ -14,7 +14,7 @@ export function LandingCard(props: {
     <Link
       className={clsx(
         $styles.card,
-        'p-[36px] text-[#263035] bg-white flex rounded-[16px] w-[calc(50%_-_12px)] cursor-pointer no-underline hover:no-underline hover:text-[#263035]',
+        'p-[36px] text-[#263035] bg-white flex rounded-[16px] w-[388px] cursor-pointer no-underline hover:no-underline hover:text-[#263035]',
         props.className,
       )}
       to={props.to}
