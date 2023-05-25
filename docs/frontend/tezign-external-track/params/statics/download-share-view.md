@@ -4,4 +4,4 @@ sidebar_position: 1
 
 # 内容的下载/分享/浏览数据
 
-[特赞 DAM 开放接口（后端版）\_V1.0.1](https://tezign.feishu.cn/docs/doccneM05z5RAX1avvXJ7y3O28g#oNXYSS '特赞 DAM 开放接口（后端版）_V1.0.1') 中的 **根据内容 ID 列表获取内容统计值**
+[根据内容 ID 列表获取内容统计值](https://open.tezign.com/openapi?afp=%2Fapi-56428357)
