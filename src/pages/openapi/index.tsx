@@ -19,7 +19,7 @@ function OpenApi() {
         key={src}
         src={src}
         style={{
-          height: '100%',
+          height: 'calc(100vh - 60px)',
           width: '100%',
         }}
         referrerPolicy="same-origin"
