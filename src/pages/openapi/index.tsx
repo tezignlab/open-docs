@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import Layout from '@theme/Layout';
 import $styles from './index.module.css';
 import { useLocation } from '@docusaurus/router';
 
 function OpenApi() {
   const location = useLocation();
+  const search = location.search;
 
-  const afp = new URLSearchParams(location.search).get('afp'); // apifox path
-  const src = `https://tz-open-api.apifox.cn${afp ?? ''}`;
+  const [src, setSrc] = useState('https://tz-open-api.apifox.cn');
+  useLayoutEffect(() => {
+    const afp = new URLSearchParams(location.search).get('afp'); // apifox path
+    setSrc(`https://tz-open-api.apifox.cn${afp ?? ''}`);
+  }, [search]);
 
   return (
     <Layout
