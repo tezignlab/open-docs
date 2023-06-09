@@ -12,7 +12,7 @@ title: 快速开始
    1. 测试环境调试可以配置本地的服务插件地址，比如 `http://localhost:5137/src/plugin.js`。
    2. 其他环境需要[上传插件](#上传插件)构建产物到 CDN，得到 CDN 地址后，配置到 CS 后台。
 
-:::note
+:::caution
 
 目前只有测试环境下的 [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) 配置开放对 localhost 资源的访问。
 
