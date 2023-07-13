@@ -31,6 +31,7 @@ interface Config {
         | 'url'; // 网页内容
       limit: number; // 限制格式数量(limit=0 代表不限制格式数量)
       sizeLimit?: Byte;
+      groupId?: number; // 需要直接定位到指定素材组的组id
     }>;
   };
 }
@@ -56,6 +57,7 @@ iframe.contentWindow.postMessage(
       filterCode: 'open-component-search-001',
       formatLimit: 5,
       sizeLimit: 10 * Math.pow(1024, 2), // 只能选择<=10MB素材
+      groupId: 123456,
     },
   },
   '*',
