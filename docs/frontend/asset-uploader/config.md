@@ -21,6 +21,12 @@ interface Config {
     // 非必填。入库接口地址
     // 该字段不传默认会调接口入库
     saveUrl?: string;
+    // 是否打标入库，唤起打标弹窗
+    tagging?: boolean;
+    // 打标弹窗中打标模版code（tagging为true生效）
+    templateCode?: string;
+    // 唯一标识
+    id?: string;
   };
 }
 ```
