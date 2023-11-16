@@ -22,7 +22,7 @@ interface SelectorUI {
 iframe.contentWindow?.postMessage(
   {
     type: 'tezign-selector-ui',
-    data: { '#defaultActiveTab': 'group' },
+    data: { defaultActiveTab: 'group' },
   },
   '*',
 );
