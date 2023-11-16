@@ -25,6 +25,8 @@ interface SelectorUI {
   confirmBtn?: {
     text: string; // 确认按钮文案
   };
+  // 首次进入默认打开素材或素材组，默认素材
+  defaultActiveTab: 'group';
   // 底部提示栏
   '#alert'?: {
     // 提示文案
