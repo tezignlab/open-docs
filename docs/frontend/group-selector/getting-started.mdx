@@ -3,7 +3,7 @@ sidebar_position: 2
 title: 快速开始
 ---
 
-你需要将素材选择器的链接用 iframe 嵌入你的系统，你的代码和组件会基于[postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)来进行通信交互数据。
+你需要将素材组选择器的链接用 iframe 嵌入你的系统，你的代码和组件会基于[postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)来进行通信交互数据。
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <title>素材选择器父页面</title>
+    <title>素材组选择器父页面</title>
   </head>
   <body>
     <script>
@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
           return;
         }
 
-        if (event?.data?.type === 'tezign-selector-page-ready') {
+        if (event?.data?.type === 'tezign-asset-group-selector-ready') {
           // iframe 页面加载完成，可以传入配置参数
           if (!iframe.contentWindow) {
             return;
@@ -35,26 +35,21 @@ import TabItem from '@theme/TabItem';
 
           iframe.contentWindow.postMessage(
             {
-              type: 'tezign-material-selector',
+              type: 'tezign-asset-group-selector-config',
               data: {
-                config: [
-                  { id: 'image', limit: 5 },
-                  { id: 'audio', limit: 9 },
-                ],
-                filterCode: 'open-component-search-001',
-                formatLimit: 5,
+                rootSelectable: true,
               },
             },
             '*',
           );
           return;
         }
-        if (event?.data?.type === 'tezign-selector-confirm-btn') {
-          // 点击【确认】 按钮 -- 这里接收已选择的素材集合
-          console.log(event.data.selectedMaterial);
+        if (event?.data?.type === 'tezign-asset-group-selector-confirm') {
+          // 点击【确认】 按钮 -- 这里接收已选择的素材组集合
+          console.log(event.data);
           return;
         }
-        if (event?.data?.type === 'tezign-selector-cancel-btn') {
+        if (event?.data?.type === 'tezign-asset-group-selector-cancel') {
           // 点击【取消】 按钮
           console.log(event.data);
           return;
@@ -63,7 +58,7 @@ import TabItem from '@theme/TabItem';
       window.addEventListener('message', receiveMessage, false);
     </script>
     <iframe
-      src="https://xxx.tezign.com/dam_enterprise/material_selector"
+      src="https://xxx.tezign.com/dam_enterprise/material_group_selector"
       id="iframe"
     />
   </body>
@@ -77,8 +72,9 @@ import TabItem from '@theme/TabItem';
 ```typescript jsx
 import React, { useEffect, useRef } from 'react';
 
-// 此iframeUrl 填入素材选择器链接
-const iframeUrl = 'https://xxx.tezign.com/dam_enterprise/material_selector';
+// 此iframeUrl 填入素材组选择器链接
+const iframeUrl =
+  'https://xxx.tezign.com/dam_enterprise/material_group_selector';
 
 export default function App() {
   const ref = useRef(null);
@@ -89,30 +85,21 @@ export default function App() {
       return;
     }
 
-    if (event?.data?.type === 'tezign-selector-page-ready') {
-      // iframe 页面加载完成，可以传入配置参数
-      ref?.current?.contentWindow?.postMessage(
-        {
-          type: 'tezign-material-selector',
-          data: {
-            config: [
-              { id: 'image', limit: 5 },
-              { id: 'audio', limit: 9 },
-            ],
-            filterCode: 'open-component-search-001',
-            formatLimit: 5,
-          },
+    iframe.contentWindow.postMessage(
+      {
+        type: 'tezign-asset-group-selector-config',
+        data: {
+          rootSelectable: true,
         },
-        '*',
-      );
+      },
+      '*',
+    );
+    if (event?.data?.type === 'tezign-asset-group-selector-confirm') {
+      // 点击【确认】 按钮 -- 这里接收已选择的素材组集合
+      console.log(event.data);
       return;
     }
-    if (event?.data?.type === 'tezign-selector-confirm-btn') {
-      // 点击【确认】 按钮 -- 这里接收已选择的素材集合
-      console.log(event.data.selectedMaterial);
-      return;
-    }
-    if (event?.data?.type === 'tezign-selector-cancel-btn') {
+    if (event?.data?.type === 'tezign-asset-group-selector-cancel') {
       // 点击【取消】 按钮
       console.log(event.data);
       return;

@@ -14,6 +14,10 @@ interface UIConfig {
   data: {
     // 非必填。隐藏右上角关闭按钮。
     hideCancel?: boolean;
+    // 是否显示状态栏
+    disableStatusbar?: boolean;
+    // 是否显示完成页面
+    disableCompletedBar?: boolean;
   };
 }
 ```
