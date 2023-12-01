@@ -6,7 +6,7 @@ sidebar_position: 6
 
 :::info
 
-请在响应`tezign-selector-page-ready`事件时候，在通过`tezign-material-selector`命令传入配置数据之前使用`tezign-selector-ui`命令，避免出现 UI 抖动问题。
+请在响应 `tezign-selector-page-ready` 事件时候，再通过 `tezign-material-selector` 命令传入配置数据之前使用 `tezign-selector-ui` 命令，避免出现 UI 抖动问题。
 
 :::
 
