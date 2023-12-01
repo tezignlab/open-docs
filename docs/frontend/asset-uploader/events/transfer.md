@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # 上传 File 文件
 
-支持通过 postMessage 的方式来上传文件。
+支持通过 `postMessage` 的方式来上传文件。
 
 ## 数据结构
 

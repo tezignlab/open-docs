@@ -62,8 +62,6 @@ export default function EncryptComponent() {
 
   return (
     <div>
-      <p>AES</p>
-
       <p>
         Input Encryption <br />
         <textarea
