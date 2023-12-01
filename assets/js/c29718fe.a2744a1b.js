@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktezign_open_docs=self.webpackChunktezign_open_docs||[]).push([[2033],{6158:e=>{e.exports=JSON.parse('{"title":"\u901a\u7528\u6d41\u7a0b","description":"xx","slug":"/category/common","permalink":"/docs/frontend/category/common","navigation":{"next":{"title":"\u6388\u6743","permalink":"/docs/frontend/common/authorize"}}}')}}]);
