@@ -61,7 +61,7 @@ iframe.contentWindow.postMessage(
           sizeLimit: 10 * 1024 ** 2, //只能选择<=10MB的音频
         },
       ],
-      filterCode: 'open-component-search-001',
+      filterCode: 'open-component-search-003',
       formatLimit: 5,
       sizeLimit: 10 * Math.pow(1024, 2), // 只能选择<=10MB素材
       groupId: 123456,
@@ -76,5 +76,5 @@ iframe.contentWindow.postMessage(
 - 支持将素材组内的素材全部添加到列表中。查询组内数量上限为 1000
 - 关于选组添加的校验限制说明：
 
-* 如果限制总数量或大小，未满足的情况下，整组素材将不被选择
-* 如果限制了具体格式数量或大小，只要存在未满足的情况下，整组素材将不被选择
+  - 如果限制总数量或大小，未满足的情况下，整组素材将不被选择
+  - 如果限制了具体格式数量或大小，只要存在未满足的情况下，整组素材将不被选择

@@ -1,11 +1,41 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # 授权
 
-向特赞申请：authUrl, aesKey, aesIv
-SSO 认证链接格式：{authUrl}?aesUserInfo={经过 aesKey 加密的用户信息}&targetUrl={encodeURIComponent(认证成功重定向地址)}，加密信息生成规则如下：
+通过 iframe 访问相关的开放组件，你需要先进行授权，授权成功后，才能访问到相关的开放组件。
+
+## 授权流程
+
+1. 向特赞申请：**authUrl, aesKey, aesIv**，并根据实际的业务场景，咨询使用的租户域名，邮箱/手机等信息。
+2. SSO 认证链接格式：`{authUrl}?aesUserInfo={encodeURIComponent(经过 aesKey 加密的用户信息)}&targetUrl={encodeURIComponent(认证成功重定向地址)}`
+
+加密算法：
+
+- AES. 数据填充方式: `AES/CBC/PKCS5Padding`
+
+加密字段信息，举例如下：
+
+```json
+{
+  "loginEmail": "test@demo.com",
+  "domain": "test.demo.com",
+  "encryptTime": 1701051555480
+}
+```
+
+> sso url 中的参数需要进行 encodeURIComponent 处理
+
+## Example
+
+加密信息示例代码如下：
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="vanilla" label="Java" default>
 
 ```java
 import com.alibaba.fastjson.JSONObject;
@@ -49,7 +79,7 @@ public class AESUtilV2 {
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParam);// 初始化为加密模式的密码器
             byte[] result = cipher.doFinal(bytePlainText);// 加密
             String encryptString = Base64.encodeBase64String(result);
-            return URLEncoder.encode(encryptString, "utf-8");
+            return encryptString;
         } catch (Exception ex) {
             Logger.getLogger(AESUtilV2.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -110,3 +140,13 @@ public class AESUtilV2 {
     }
 }
 ```
+
+</TabItem>
+
+</Tabs>
+
+## 验证
+
+import EncryptComponent from '../../../examples/encrypt/index';
+
+<EncryptComponent />

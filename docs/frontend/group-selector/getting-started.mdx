@@ -3,7 +3,13 @@ sidebar_position: 2
 title: 快速开始
 ---
 
-你需要将素材组选择器的链接用 iframe 嵌入你的系统，你的代码和组件会基于[postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)来进行通信交互数据。
+import Link from '@docusaurus/Link';
+
+在开始接入前，你需要先完成 <Link to="/docs/frontend/common/authorize">授权</Link>。
+
+素材组选择器的链接通过 iframe 嵌入你的系统，你的代码和组件会基于 [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) 来进行通信交互数据。
+
+素材组选择器链接是： `{domain}/dam_enterprise/material_group_selector`。 其中 `domain` 为客户内容中台的域名。
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

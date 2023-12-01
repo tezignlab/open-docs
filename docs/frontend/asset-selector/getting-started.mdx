@@ -3,7 +3,13 @@ sidebar_position: 2
 title: 快速开始
 ---
 
-你需要将素材选择器的链接用 iframe 嵌入你的系统，你的代码和组件会基于[postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)来进行通信交互数据。
+import Link from '@docusaurus/Link';
+
+在开始接入前，你需要先完成 <Link to="/docs/frontend/common/authorize">授权</Link>。
+
+素材选择器的链接通过 iframe 嵌入你的系统，你的代码和组件会基于 [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) 来进行通信交互数据。
+
+素材选择器链接是： `{domain}/dam_enterprise/material_selector`。 其中 `domain` 为客户内容中台的域名。
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -16,14 +22,14 @@ import TabItem from '@theme/TabItem';
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <title>素材选择器父页面</title>
+    <title>素材上传父页面</title>
   </head>
   <body>
     <script>
       const receiveMessage = (event) => {
         const iframe = document.getElementById('iframe');
         if (!iframe || event.source !== iframe.contentWindow) {
-          // 判断是否为当前iframe发出的消息
+          // 判断是否为当前 iframe 发出的消息
           return;
         }
 
@@ -41,7 +47,7 @@ import TabItem from '@theme/TabItem';
                   { id: 'image', limit: 5 },
                   { id: 'audio', limit: 9 },
                 ],
-                filterCode: 'open-component-search-001',
+                filterCode: 'open-component-search-003',
                 formatLimit: 5,
               },
             },
@@ -99,7 +105,7 @@ export default function App() {
               { id: 'image', limit: 5 },
               { id: 'audio', limit: 9 },
             ],
-            filterCode: 'open-component-search-001',
+            filterCode: 'open-component-search-003',
             formatLimit: 5,
           },
         },
