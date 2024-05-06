@@ -18,6 +18,11 @@ interface SelectorUICmd {
   data: SelectorUI;
 }
 
+enum ShowTabsValue {
+  Value0 = 'groups',
+  Value1 = 'materials',
+}
+
 interface SelectorUI {
   // 为true时隐藏右上角的"X"关闭按钮
   hideCancel?: boolean;
@@ -34,6 +39,7 @@ interface SelectorUI {
   };
   // 底部操作组件
   '#action'?: IMetaComp[];
+  showTabs?: (typeof ShowTabsValue)[keyof typeof ShowTabsValue][];
 }
 
 type IMetaComp = IMetaCompCheckBox;
