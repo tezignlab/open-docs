@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktezign_open_docs=self.webpackChunktezign_open_docs||[]).push([[29],{4076:e=>{e.exports=JSON.parse('{"permalink":"/changelog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"\u7279\u8d5e\u5f00\u653e\u5e73\u53f0\u66f4\u65b0\u65e5\u5fd7","blogTitle":"\u66f4\u65b0\u65e5\u5fd7"}')}}]);
