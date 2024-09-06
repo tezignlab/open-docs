@@ -10,5 +10,5 @@ sidebar_position: 4
 import tezignSdk from '@tezignlab/tezign-external-track';
 import persistLocalStoragePlugin from '@tezignlab/tezign-external-track/dist/esm/plugins/persist-localstorage';
 
-tezignSdk.use(persistLocalStoragePlugin())
+tezignSdk.use(persistLocalStoragePlugin());
 ```

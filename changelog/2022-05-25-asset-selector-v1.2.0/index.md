@@ -205,7 +205,7 @@ iframe.contentWindow.postMessage(
         { id: 'image', limit: 5 },
         { id: 'audio', limit: 9, sizeLimit: 10 * Math.pow(1024, 2) },
       ],
-      filterCode: 'open-component-search-001',
+      filterCode: 'open-component-search-003',
       formatLimit: 5,
       sizeLimit: 10 * Math.pow(1024, 2), // 只能选择<=10MB素材
     },

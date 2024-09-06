@@ -18,3 +18,9 @@ Plugin 是指在 DAM 项目中对应的 Slot 中渲染的自定义组件，或�
 - [Component](./plugin-types/component-plugin)
 - [Function](./plugin-types/function-plugin)
 - [Iframe](./plugin-types/iframe-plugin)
+
+:::caution
+
+插件系统会使用 ECMAScript Modules(ESM) 去加载你的 [Component](./plugin-types/component-plugin) 和 [Function](./plugin-types/function-plugin) 插件，请注意你的插件打包产物使用的模块系统。
+
+:::

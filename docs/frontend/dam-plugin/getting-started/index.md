@@ -9,8 +9,14 @@ title: 快速开始
 2. 根据插件类型（Plugin Type）创建插件项目（可以使用我们的脚手架 [@tezignlab/create-dam-plugin](https://www.npmjs.com/package/@tezignlab/create-dam-plugin)）。
 3. 然后按照正常的应用来开发
 4. 和 DAM 主应用调试/验证。需要在特赞的 CS 后台进行配置，请联系相关对接人。
-   1. 测试环境调试可以配置本地的服务插件地址。比如 `http://localhost:5137/src/plugin.js`
+   1. 测试环境调试可以配置本地的服务插件地址，比如 `http://localhost:5137/src/plugin.js`。
    2. 其他环境需要[上传插件](#上传插件)构建产物到 CDN，得到 CDN 地址后，配置到 CS 后台。
+
+:::caution
+
+目前只有测试环境下的 [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) 配置开放对 localhost 资源的访问。
+
+:::
 
 ## 例子
 

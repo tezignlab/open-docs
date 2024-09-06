@@ -6,7 +6,7 @@ sidebar_position: 6
 
 :::info
 
-请在响应`tezign-selector-page-ready`事件时候，在通过`tezign-material-selector`命令传入配置数据之前使用`tezign-selector-ui`命令，避免出现 UI 抖动问题。
+请在响应 `tezign-selector-page-ready` 事件时候，再通过 `tezign-material-selector` 命令传入配置数据之前使用 `tezign-selector-ui` 命令，避免出现 UI 抖动问题。
 
 :::
 
@@ -18,6 +18,11 @@ interface SelectorUICmd {
   data: SelectorUI;
 }
 
+enum ShowTabsValue {
+  Value0 = 'groups',
+  Value1 = 'materials',
+}
+
 interface SelectorUI {
   // 为true时隐藏右上角的"X"关闭按钮
   hideCancel?: boolean;
@@ -25,6 +30,8 @@ interface SelectorUI {
   confirmBtn?: {
     text: string; // 确认按钮文案
   };
+  // 首次进入默认打开素材或素材组，默认素材
+  defaultActiveTab: 'group';
   // 底部提示栏
   '#alert'?: {
     // 提示文案
@@ -32,6 +39,7 @@ interface SelectorUI {
   };
   // 底部操作组件
   '#action'?: IMetaComp[];
+  showTabs?: (typeof ShowTabsValue)[keyof typeof ShowTabsValue][];
 }
 
 type IMetaComp = IMetaCompCheckBox;

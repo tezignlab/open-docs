@@ -24,15 +24,15 @@ tezignSdk.init(params: IInitParams)
 
 ## client_id
 
-应用 ID，申请后由特赞颁发, [授权&基础约定](https://tezign.feishu.cn/docs/doccnCNdREH3NXEbo2SIfDHYaWe '授权&基础约定') 中的 clientId，咨询对接人
+应用 ID，申请后由特赞颁发, [通用参数](https://open.tezign.com/openapi?afp=%2Fdoc-1896237) 中的 clientId，咨询对接人
 
 ## token
 
-访问令牌，[授权&基础约定](https://tezign.feishu.cn/docs/doccnCNdREH3NXEbo2SIfDHYaWe '授权&基础约定') 中的返回 access_token
+访问令牌，[通用参数](https://open.tezign.com/openapi?afp=%2Fdoc-1896237) 中的返回 access_token
 
 ## api
 
-埋点请求 url，见[特赞 DAM 开放接口（后端版）\_V1.0.1](https://tezign.feishu.cn/docs/doccneM05z5RAX1avvXJ7y3O28g#HdWEVb '特赞 DAM 开放接口（后端版）_V1.0.1') 中客户端埋点上传；
+埋点请求 url，见[根据内容 ID 列表获取内容统计值](https://open.tezign.com/openapi?afp=%2Fapi-56428357)中客户端埋点上传；
 
 ## 开发/测试环境对接
 

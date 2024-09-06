@@ -4,7 +4,51 @@ sidebar_position: 5
 
 # 组件事件
 
-## 数据结构
+选择器还支持其他相关的事件，来辅助接入方更好的控制选择器的行为。
+
+## 选择更新
+
+触发时机是用户选择素材更新的时候。
+
+### 数据结构
+
+```typescript
+interface SelectionChangeEvent {
+  // 事件标识
+  type: 'tezign-selector-selection-change';
+  data: ConfirmData; // 同tezgin-selector-confirm-btn的数据结构（查看权限）
+}
+```
+
+## 清空素材
+
+清空用户所选素材
+
+### 数据结构
+
+```typescript
+interface ClearEvent {
+  // 事件标识
+  type: 'tezign-selector-clear';
+}
+```
+
+## 重置数据
+
+重置整个 iframe 数据。重置内部包括用户所选素材、搜索关键字、筛选项等。
+
+### 数据结构
+
+```typescript
+interface ResetEvent {
+  // 事件标识
+  type: 'tezign-selector-reset';
+}
+```
+
+## 支持额外扩展底部操作组件栏
+
+### 数据结构
 
 ```typescript
 interface EventComponent {
@@ -22,7 +66,7 @@ enum ECompType {
 }
 ```
 
-## 例子
+### 例子
 
 ```javascript
 // 配置checkbox到底部操作栏

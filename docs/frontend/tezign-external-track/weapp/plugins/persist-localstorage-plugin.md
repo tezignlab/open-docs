@@ -7,7 +7,9 @@ sidebar_position: 3
 - 在 sdk 初始化时 会从 localstorage 取出之前还未来得及上报的事件进行上报
 
 ```typescript
-import tezignSdk, { persistLocalStoragePlugin } from '@tezignlab/tezign-external-track/miniprogram_dist';
+import tezignSdk, {
+  persistLocalStoragePlugin,
+} from '@tezignlab/tezign-external-track/miniprogram_dist';
 
-tezignSdk.use(persistLocalStoragePlugin())
+tezignSdk.use(persistLocalStoragePlugin());
 ```

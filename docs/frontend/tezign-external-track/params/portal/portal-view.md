@@ -10,6 +10,6 @@ tezignSdk.track({
   event_properties: {
     data_source: 'external_sdk',
     portal_id,
-  }
-})
+  },
+});
 ```
