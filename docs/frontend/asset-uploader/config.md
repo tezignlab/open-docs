@@ -17,15 +17,15 @@ interface Config {
     accept?: string;
     /** 一次最大上传数量 */
     maximum?: number;
-    /** 
-     * 文件限制提示文案 
+    /**
+     * 文件限制提示文案
      * 默认文案： 一次只能上传 ${maximum} 个文件
-    */
+     */
     maximumTip?: string;
-    /** 
-     * 入库接口地址 
+    /**
+     * 入库接口地址
      * 不传时不入库
-    */
+     */
     saveUrl?: string;
     /** 是否打标入库，唤起打标弹窗 */
     tagging?: boolean;
@@ -58,37 +58,3 @@ iframe.contentWindow.postMessage(
   '*',
 );
 ```
-
-# 额外上传方式配置
-
-## 数据结构
-
-```typescript
-interface IUpload {
-  type: 'tezign-asset-uploader-upload';
-  data: {
-    /** 
-     * 额外的上传方式
-     * url: 已有的素材url上传
-     * blob: 二进制文件上传
-    */
-    type: 'url'
-    /** */
-    files: {
-      /** 文件名 */
-      fileName?: string;
-      /** 素材资源url */
-      url: string;
-    }[];
-  } | {
-    type: 'blob';
-    /** 二进制文件信息 */ 
-    files: IFile[];
-
-  };
-}
-```
-
-## 注：
-定义额外上传方式后，不再唤起本地文件选择；
-详细使用请咨询特赞。
