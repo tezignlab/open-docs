@@ -12,12 +12,30 @@ sidebar_position: 4
 interface UIConfig {
   type: 'tezign-asset-uploader-ui';
   data: {
-    // 非必填。隐藏右上角关闭按钮。
+    /** 隐藏右上角关闭按钮 */
     hideCancel?: boolean;
-    // 是否显示状态栏
+    /** 
+     * 上传方式,默认['file', 'folder']
+     * file: 上传文件
+     * folder: 上传文件夹
+    */
+    showList?: ('file' | 'folder')[];
+    /** 是否显示状态栏 */
     disableStatusbar?: boolean;
-    // 是否显示完成页面
+    /** 是否显示完成页面 */
     disableCompletedBar?: boolean;
+    /** 自定义上传弹窗类名 */
+    modalContainerClassName?: string;
+    /** 自定义上传弹窗样式 */
+    cusModalClassStyle?: Record<string, object>;
+    /** 重新选择文案 */
+    retryText?: string;
+    /** 直接入库按钮文案 */
+    directConfirmText?: string;
+    /** 底部提示文案 */
+    footTips?: string;
+    /** 确认按钮文案 */
+    confirmText?: string;
   };
 }
 ```
@@ -28,6 +46,7 @@ interface UIConfig {
 iframe.contentWindow?.postMessage({
   type: 'tezign-asset-uploader-ui',
   data: {
+    showList: ['file']
     hideCancel: true,
   },
 });

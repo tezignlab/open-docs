@@ -12,13 +12,19 @@ interface Config {
   type: 'tezign-material-selector';
   // 需要传递的配置数据
   data: {
-    // 筛选项配置code
+    /** 调用方标识，解决多个监听方冲突问题 */
+    id?: string;
+    /** 筛选项配置code,由特赞提供 */
     filterCode: string;
-    // 非必填。 限制所选择的文件总数量（只有在不限制文件格式和格式数量时，此字段才生效）
+    /** 限制所选择的文件总数量（只有在不限制文件格式和格式数量时，此字段才生效）*/
     formatLimit?: number;
-    // 非必填。控制选择的素材大小，单位是byte（（只有在不限制文件格式和格式数量时，此字段才生效））。
+    /** 非必填。控制选择的素材大小，单位是byte（（只有在不限制文件格式和格式数量时，此字段才生效））*/
     sizeLimit?: Byte;
+    /** 总文件的大小限制 */
+    totalSizeLimit?: number;
+    /** 对不同类型素材的定义 */
     config: Array<{
+      /** 素材类型 */
       id:
         | 'image' // 图片
         | 'audio' // 音频
@@ -32,14 +38,15 @@ interface Config {
         | 'text' // 纯文本
         | 'rtf' // 文章
         | 'url'; // 网页内容
-      // 限制格式数量(limit=0 代表不限制格式数量)
+      /** 限制格式数量(limit=0 代表不限制格式数量) */
       limit: number;
+      /** 控制选择的素材大小，单位是byte */
       sizeLimit?: Byte;
-      // 需要直接定位到指定素材组的组id
-      groupId?: number;
-      // 是否可选择组
-      groupSelectable: boolean;
     }>;
+    /** 唤起素材选择器时默认展示此素材组 */
+    groupId?: number;
+    /** 是否可选择素材组下的所有素材 */
+    groupSelectable?: boolean;
   };
 }
 
