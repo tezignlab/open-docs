@@ -8,9 +8,11 @@ import Link from '@docusaurus/Link';
 
 在开始接入前，你需要先完成 <Link to="/docs/frontend/common/authorize">授权</Link>。
 
-素材上传组件的链接通过 iframe 嵌入你的系统，你的代码和组件会基于 [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) 来进行通信交互数据。
+素材上传器的链接通过 iframe 嵌入你的系统，你的代码和组件会基于 [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) 来进行通信交互数据。
 
-素材上传组件链接是： `{domain}/dam_enterprise/asset-uploader`。 其中 `domain` 为客户内容中台的域名。
+素材上传器链接是：`{authUrl}?aesUserInfo={encodeURIComponent(经过 aesKey 加密的用户信息)}&targetUrl={encodeURIComponent({domain}/dam_enterprise/asset-uploader)}`。参照<Link to="/docs/frontend/common/authorize">授权</Link>。
+
+其中 `domain` 为客户内容中台（DAM）的域名。
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -66,10 +68,9 @@ import TabItem from '@theme/TabItem';
       };
       window.addEventListener('message', receiveMessage, false);
     </script>
-    <iframe
-      src="https://xxx.tezign.com/dam_enterprise/asset-uploader"
-      id="iframe"
-    />
+    <iframe src=`{authUrl}?aesUserInfo={encodeURIComponent(经过 aesKey
+    加密的用户信息)}&targetUrl={encodeURIComponent({domain}/dam_enterprise/asset-uploader)}`
+    id="iframe" />
   </body>
 </html>
 ```
@@ -82,12 +83,18 @@ import TabItem from '@theme/TabItem';
 import React, { useEffect, useRef } from 'react';
 
 // 此iframeUrl 填入上传链接
-const iframeUrl = 'https://xxx.tezign.com/dam_enterprise/asset-uploader';
+const iframeUrl = `{authUrl}?aesUserInfo={encodeURIComponent(经过 aesKey 加密的用户信息)}&targetUrl={encodeURIComponent({domain}/dam_enterprise/asset-uploader)}`;
 
 export default () => {
   const ref = useRef(null);
 
   const receiveMessage = (event) => {
+    const iframe = document.getElementById('iframe');
+    if (!iframe || event.source !== iframe.contentWindow) {
+      // 判断是否为当前 iframe 发出的消息
+      return;
+    }
+
     if (event?.data?.type === 'tezign-asset-uploader-ready') {
       // iframe 页面加载完成，可以传入配置参数
       ref.current?.contentWindow?.postMessage(
