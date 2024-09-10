@@ -8,9 +8,9 @@ import Link from '@docusaurus/Link';
 
 在开始接入前，你需要先完成 <Link to="/docs/frontend/common/authorize">授权</Link>。
 
-素材上传组件的链接通过 iframe 嵌入你的系统，你的代码和组件会基于 [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) 来进行通信交互数据。
+素材上传器的链接通过 iframe 嵌入你的系统，你的代码和组件会基于 [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) 来进行通信交互数据。
 
-素材上传组件链接是：`{authUrl}?aesUserInfo={encodeURIComponent(经过 aesKey 加密的用户信息)}&targetUrl={encodeURIComponent({domain}/dam_enterprise/asset-uploader)}`。参照<Link to="/docs/frontend/common/authorize">授权</Link>。
+素材上传器链接是：`{authUrl}?aesUserInfo={encodeURIComponent(经过 aesKey 加密的用户信息)}&targetUrl={encodeURIComponent({domain}/dam_enterprise/asset-uploader)}`。参照<Link to="/docs/frontend/common/authorize">授权</Link>。
 
 其中 `domain` 为客户内容中台（DAM）的域名。
 
