@@ -8,9 +8,9 @@ sidebar_position: 5
 
 ```typescript
 interface Config {
-  // 页面传递或接收的数据标识（postMessage形式）
+  /** 页面传递或接收的数据标识（postMessage形式）*/
   type: 'tezign-material-selector';
-  // 需要传递的配置数据
+  /** 需要传递的配置数据 */
   data: {
     /** 调用方标识，解决多个监听方冲突问题 */
     id?: string;
