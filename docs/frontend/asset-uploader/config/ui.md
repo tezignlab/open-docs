@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 # UI 配置
@@ -14,12 +14,12 @@ interface UIConfig {
   data: {
     /** 隐藏右上角关闭按钮 */
     hideCancel?: boolean;
-    /** 
-     * 上传方式,默认['file', 'folder']
+    /**
+     * 上传方式
      * file: 上传文件
      * folder: 上传文件夹
-    */
-    showList?: ('file' | 'folder')[];
+     */
+    showList: ('file' | 'folder')[];
     /** 是否显示状态栏 */
     disableStatusbar?: boolean;
     /** 是否显示完成页面 */

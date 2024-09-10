@@ -1,8 +1,14 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 
-# 配置项
+# 基本配置
+
+:::info
+
+请在响应 `tezign-selector-page-ready` 事件时候，通过 `tezign-material-selector` 命令传入配置数据。
+
+:::
 
 # 数据结构
 
