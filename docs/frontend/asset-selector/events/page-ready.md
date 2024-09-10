@@ -8,7 +8,7 @@ sidebar_position: 1
 
 ## 数据结构
 
-````typescript
+```typescript
 interface EventReady {
   // 事件标识
   type: 'tezign-selector-page-ready';
@@ -17,6 +17,7 @@ interface EventReady {
     msg: string;
   };
 }
+```
 
 ## 示例
 
@@ -46,10 +47,9 @@ interface EventReady {
       };
       window.addEventListener('message', receiveMessage, false);
     </script>
-    <iframe
-      src=`{authUrl}?aesUserInfo={encodeURIComponent(经过 aesKey 加密的用户信息)}&targetUrl={encodeURIComponent({domain}/dam_enterprise/material_selector)}`
-      id="iframe"
-    />
+    <iframe src=`{authUrl}?aesUserInfo={encodeURIComponent(经过 aesKey
+    加密的用户信息)}&targetUrl={encodeURIComponent({domain}/dam_enterprise/material_selector)}`
+    id="iframe" />
   </body>
 </html>
-````
+```
