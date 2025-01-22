@@ -53,6 +53,27 @@ interface Config {
     groupId?: number;
     /** 是否可选择素材组下的所有素材 */
     groupSelectable?: boolean;
+    /** 搜索默认值，单个搜索传参字符串，搜索多个传参数组类型 */
+    searchDefaultValue?: string | string[];
+    /** 可选参数，配合filter参数使用，在设置了filter时，展示所有下拉项 */
+    showAllOptions?: boolean;
+    /** 筛选默认值 */
+    filter?: {
+      [code: string]: {
+        /** 筛选项的默认值
+         * JSON.stringify({value: Array; title: string})
+         */
+        defaultValue?: string;
+        /** 筛选项的下拉options, 设置showAllOptions: true 此参数会无效 */
+        configValueList?: (number | string)[];
+        /** once允许取消选中  always 不允许取消选中*/
+        fillEmptyByDefault?: 'once' | 'always';
+        props?: {
+          max?: number;
+          min?: number;
+        };
+      };
+    };
   };
 }
 
@@ -78,6 +99,53 @@ iframe.contentWindow.postMessage(
       formatLimit: 5,
       sizeLimit: 10 * Math.pow(1024, 2), // 只能选择<=10MB素材
       groupId: 123456,
+    },
+  },
+  '*',
+);
+```
+
+## 筛选默认值示例
+
+```javascript
+iframe.contentWindow.postMessage(
+  {
+    type: 'tezign-material-selector',
+    data: {
+      config: [],
+      filterCode: 'open-component-search-003',
+      filter: {
+        // 默认筛选文件类型
+        SEARCH_FILE_TYPE: {
+          defaultValue: JSON.stringify({
+            title: '文件',
+            value: [
+              [1,2,3,26,4,27,44,46,49,53],
+              [5,6,7,8,9,10,29,30,41,45,52,54],
+              [42,43,13],
+              [16,17,50,19,20,51],
+              [61],
+              [62],
+              [47,48,28]
+            ]
+          }),
+          configValueList: [1,2,3,26,4,27,44,46,49,53,42,43,13,16,17,50,19,20,51,5,6,7,8,9,10,29,30,41,45,52,54,61,62,47,48,28],
+          fillEmptyByDefault: 'once' as const
+        },
+        // 默认筛选文件大小 0～200MB
+        CORE_SIZE: {
+          defaultValue: JSON.stringify({
+            title: '0～200MB',
+            value: [0, 209715200]
+          }),
+          configValueList: [0, 209715200],
+          fillEmptyByDefault: 'once' as const,
+          props: {
+            max: 200,
+            min: 0
+          }
+        }
+      }
     },
   },
   '*',
