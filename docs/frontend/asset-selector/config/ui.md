@@ -24,6 +24,8 @@ enum ShowTabsValue {
 }
 
 interface SelectorUI {
+  /** 国际化，默认跟随系统设置，参数：zh-CN/en-US */
+  lang?: string;
   // 为true时隐藏右上角的"X"关闭按钮
   hideCancel?: boolean;
   // 确认按钮配置
