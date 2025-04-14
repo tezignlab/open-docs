@@ -152,6 +152,51 @@ iframe.contentWindow.postMessage(
 );
 ```
 
+## 通过 valueTitle 筛选示例
+
+:::info
+
+valueTitle 和 value 属于互斥参数，只能选择其中一个。
+传入 value 时，valueTitle 将失效。
+传入的 valueTitle 需确认在 filterCode 对应的筛选条件下有对应的选项。
+
+:::
+
+```javascript
+iframe.contentWindow.postMessage(
+  {
+    type: 'tezign-material-selector',
+    data: {
+      config: [],
+      filterCode: 'open-component-search-003',
+      filter: {
+        // 默认筛选文件类型
+        SEARCH_FILE_TYPE: {
+          defaultValue: JSON.stringify({
+            title: '文件',
+            valueTitle: ['JPG', 'MP4']
+          }),
+          fillEmptyByDefault: 'once' as const
+        },
+        SEARCH_ASPECT_RATIO: {
+          defaultValue: JSON.stringify({
+            title: '选中：16:9',
+            valueTitle: ['16:9']
+          })
+        },
+        c4bb118a0a7e4286a3c7ea2f69374dcb: {
+          defaultValue: JSON.stringify({
+            title: '选中',
+            valueTitle: ['79AN7913S-B2A-LSS-1']
+          })
+        }
+      }
+    },
+  },
+  '*',
+);
+```
+
 ## 其他细项说明
 
 - 支持将素材组内的素材全部添加到列表中。查询组内数量上限为 1000
